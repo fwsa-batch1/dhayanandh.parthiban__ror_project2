@@ -4,12 +4,12 @@ one:
   menu_category_id: 
   name: MyString
   description: MyString
-  price: MyString
+  price: 1.5
   status: false
 
 two:
   menu_category_id: 
   name: MyString
   description: MyString
-  price: MyString
+  price: 1.5
   status: false
