@@ -1,0 +1,31 @@
+<body class="form-v2">
+	<div class="page-content">
+		<div class="form-content" style="width:59%">
+			<div class="form-left-img">
+				<%# <img src="idly.png" style="width: 89%; " class: "idly-signin-image alt="form"> %>
+        <%= image_tag "idly.png", :style => "width:100%;" %>
+			</div>
+
+      <%= form_with url: sessions_path,class: 'form-detail' do |form| %>
+				<h2>SignIn Form</h2>
+				<div class="form-input-row">
+					<label for="mail_id" class="label">Your Email:</label>
+					<%# <input type="text" name="mail_id" id="mail_id" class="input-text" placeholder="Enter Your Email" required> %>
+          <%= form.email_field :email,class:"input-text",placeholder:"Enter Your Email" %>
+      	</div>
+				<div class="form-input-row">
+					<label for="pwd" class="label">Password:</label>
+					<%# <input type="password" name="pwd" id="pwd" class="input-text" placeholder="Enter Your Password" required> %>
+          <%= form.password_field :password,class:"input-text", placeholder:"Enter Your Password"%>
+        </div>
+				<div class="last-row-input">
+					<%# <input type="submit" name="signin" class="signin" value="SignIn"> %>
+          <%= form.submit "Sign-In",class:"signin" %>
+				</div>
+			<%# </form> %>
+      <% end %>
+		</div>
+	</div>
+</body>
+
+</html>

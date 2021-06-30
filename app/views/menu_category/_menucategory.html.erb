@@ -1,0 +1,9 @@
+<div >
+  <%= form_with(url: "/menu_items", method: "post", class: "AddItem") do %>
+    <%= text_field_tag(:name, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= text_field_tag(:price, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= text_field_tag(:description, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= hidden_field_tag 'category_id', @category.id %>
+    <%= submit_tag("Add", class: "AddItem-button") %>
+  <% end %>
+</div>

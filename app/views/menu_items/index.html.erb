@@ -1,0 +1,79 @@
+<!--<% MenuItem.all.each do |items| %>
+  <p><%= items %></p>
+<% end %>-->
+<nav id="nav" class="nav">
+  <button class="menu">
+    <em class="hamburger"></em>
+  </button>
+  <div class="brand">
+    <a href="#">Brand</a>
+  </div>
+  <ul class="navbar">
+    <li>
+      <a href="#home">Home</a>
+    </li>
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li>
+      <a href="#services">Services</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ul>
+</nav>
+<h1><%= @category.name %></h1>
+<div style="display:flex; flex-direction: column;align-items: center;">
+  <% @menu_items.each do |item| %>
+    <div style="display:flex">
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+      <p><%= item.description %></p>
+      <a href="javascript:void(0)" class="MenuItem-delete">
+        <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+          <%= hidden_field_tag 'category_id', @category.id %>
+          <%= image_submit_tag("trash-can.svg",class:"trash-can") %>
+        <% end %>
+      </a>
+      <a href="javascript:void(0)" class="MenuItem-delete">
+        <%= form_with(url: "/menu_items/edit/#{item.id}", method: "get") do %>
+          <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" , class: "Category_update") %>
+        <% end %>
+      </a>
+      <a href="javascript:void(0)" class="MenuItem-delete" >
+        <%= form_with(url: "/menu_items/#{item.id}", method: "patch") do %>
+          <%= text_field_tag(:name, nil, class: "AddMenu-text", placeholder: "What's next",autofocus:"autofocus") %>
+          <%= text_field_tag(:price, nil, class: "AddMenu-text", placeholder: "What's next") %>
+          <%= text_field_tag(:description, nil, class: "AddMenu-text", placeholder: "What's next") %>
+          <%= hidden_field_tag 'category_id', @category.id %>
+          <%= submit_tag("Add", class: "AddMenu-button") %>
+        <% end %>
+      </a>
+    </div>
+  <% end %>
+</div>
+<div >
+  <%= form_with(url: "/menu_items", method: "post", class: "AddItem") do %>
+    <%= text_field_tag(:name, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= text_field_tag(:price, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= text_field_tag(:description, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
+    <%= hidden_field_tag 'category_id', @category.id %>
+    <%= submit_tag("Add", class: "AddItem-button") %>
+  <% end %>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  var $navbar = $(".nav"),
+      y_pos = $navbar.offset().top,
+      height = $navbar.height();
+  $(document).scroll(function() {
+      var scrollTop = $(this).scrollTop();
+      if (scrollTop > 0) {
+        $navbar.addClass("sticky");
+      } else {
+        $navbar.removeClass("sticky");
+      }
+  });
+</script>

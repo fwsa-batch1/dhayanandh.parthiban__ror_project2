@@ -1,33 +1,26 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<title>SignUp Form</title>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-</head>
-
 <body class="form-v2">
 	<div class="page-content">
 		<div class="form-content">
 			<div class="form-left-img">
-				<img src="idly.png" style="width: 100%; height: 99.5%;" alt="Picture of food">
+				<%= image_tag "idly.png", class: "idly-img" %>
 			</div>
-			<form class="form-detail" id="myform">
+			<%# <form class="form-detail" id="myform"> %>
+			 <%= form_with url: users_path ,class: 'form-detail' do |form| %>
 				<h2>SignUp Form</h2>
 				<div class="form-input-row">
 					<label for="fullname" class="label">Full Name:</label>
-					<input type="text" name="fullname" id="fullname" class="input-text" placeholder="Enter Your Name">
+					<%# <input type="text" name="fullname" id="fullname" class="input-text" placeholder="Enter Your Name"> %>
+					 <%= form.text_field :name, class:"input-text" , placeholder:"Enter Your Name" %>
 				</div>
 				<div class="form-input-row">
 					<label for="mail_id" class="label">Your Email:</label>
-					<input type="text" name="mail_id" id="mail_id" class="input-text" placeholder="Enter Your Email" required>
+					<%# <input type="email" name="mail_id" id="mail_id" class="input-text" placeholder="Enter Your Email" required> %>
+					 <%= form.email_field :email,class:"input-text",placeholder:"Enter Your Email" %>
 				</div>
 				<div class="form-input-row">
 					<label for="pwd" class="label">Password:</label>
-					<input type="password" name="pwd" id="pwd" class="input-text" placeholder="Enter Your Password" required>
+					<%# <input type="password" name="pwd" id="pwd" class="input-text" placeholder="Enter Your Password" required> %>
+					<%= form.password_field :password,class:"input-text", placeholder:"Enter Your Password"%>
 				</div>
 				<div style="padding-bottom: 17px; cursor: pointer;">
 					<input type="radio" name="role" id="clerk" class="input-role">
@@ -36,11 +29,12 @@
 					<label class="roles" for="user">User</label>
 				</div>
 				<div class="last-row-input">
-					<input type="submit" name="signup" class="signup" value="SignUp">
+					<%# <input type="submit" name="signup" class="signup" value="SignUp"> %>
+					<%= form.submit "Sign-Up",class:"signup" %>
 				</div>
-			</form>
+			<%# </form> %>
+			<% end %>
 		</div>
 	</div>
-</body>
 
-</html>
+</body>

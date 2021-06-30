@@ -155,10 +155,13 @@ input::-webkit-input-placeholder {
 	padding-left: 2px;
 }
 
-#clerk {
-	margin-left: 15px;
+.idly-signin-image{
+	width: 89%;
 }
-
-#user {
-	margin-left: 17px;
+#myform-signin
+{
+	font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* /* align-items: center; */
 }
