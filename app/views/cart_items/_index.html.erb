@@ -1,39 +1,31 @@
-  <h1>Cart</h1>
-  <div id="cart-container">
-    <% arr = [] %>
-    <% sum = 0 %>
-    <div id="cartitemlist">
-      <% @current_user.cart_items.all.each do |cart| %>
+
+<h1>Cart</h1>
+<div id="cart-container">
+  <% arr = [] %>
+  <div id="cartitemlist">
+    <% @current_user.cart_items.all.each do |cart| %>
       <%if cart.quantity >=1 %>
         <div class="table-cart" style="word-wrap: break-word;word-spacing: 3px;text-align: end;">
           <div>Name:</div>
           <div><%= MenuItem.find(cart.menu_item_id).name %></div>
         </div>
-
-
         <div class="table-cart">
           <div>Quantity:</div>
           <div><%= cart.quantity %></div>
         </div>
-
-
         <% arr.push(MenuItem.find(cart.menu_item_id).price * cart.quantity.to_i) %>
         <hr>
       <% end %>
-
-      <% end %>
-      <% arr.each { |a| sum += a } %>
-
-      <div class="table-cart">
-        <div>Total Price:</div>
-        <div><%= sum.to_i %></div>
-      </div>
-
+    <% end %>
+    <div class="table-cart">
+      <div>Total Price:</div>
+      <div><%=  arr.sum %></div>
     </div>
   </div>
-  <div id="checkout-button">
-    <div>
-      <% if !@current_user.address.present? %>
+</div>
+<div id="checkout-button">
+  <div>
+    <% if !@current_user.address.present? %>
       <button type="button" class="btn btn-primary" style="align-self: flex-end;
         color: #212529;
         background-color: #ffc107;
@@ -57,9 +49,8 @@
             </div>
             <div class="modal-body">
               <%= form_with(url: address_path, method: "patch", class: "AddAddress") do |form|%>
-              <%= form.text_area :address,class: "Addaddress-text", id: "message-text", required: true,autofocus: true %>
-
-              <%= form.submit("Add", class: "Addaddress-button") %>
+                <%= form.text_area :address,class: "Addaddress-text", id: "message-text", required: true,autofocus: true %>
+                <%= form.submit("Add", class: "Addaddress-button") %>
               <% end %>
               <%# <%= link_to  "Add Address",address_path,method: :patch %>
             </div>
@@ -69,15 +60,13 @@
           </div>
         </div>
       </div>
-      <% else %>
+    <% else %>
       <div>
         <%= form_with(url: orders_path, method: "post", class: "checkout") do %>
-        <%= submit_tag(" Checkout Item", class: "Addorders-button") %>
+          <%= submit_tag(" Checkout Item", class: "Addorders-button") %>
         <% end %>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
-  <script>
-
-  </script>
+</div>
+<script></script>

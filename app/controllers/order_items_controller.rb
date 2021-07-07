@@ -16,9 +16,9 @@ class OrderItemsController < ApplicationController
     order_items = 0
     create_order_items = true
     @current_user.cart_items.each do |orderitem|
-      price = MenuItem.find(orderitem.menu_item_id).price.to_f * orderitem.quantity.to_i
+      price = MenuItem.find(orderitem.menu_item_id).price
       id = MenuItem.find(orderitem.menu_item_id).id
-      quantity = orderitem.quantity.to_i
+      quantity = orderitem.quantity
       order_items = OrderItem.new(order_id: params[:order_id], price: price, quantity: quantity, menu_item_id: id)
       create_order_items = order_items.save
       break unless create_order_items
