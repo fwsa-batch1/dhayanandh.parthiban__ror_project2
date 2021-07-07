@@ -9,7 +9,7 @@
 //= require bootstrap-confirm-rails
 //= require data-confirm-modal
 //= require_tree .
-
+import 'stylesheets/application'
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
