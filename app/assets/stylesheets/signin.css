@@ -2,9 +2,13 @@ body {
 	margin: 0;
 }
 
-.page-content {
+#page{
 	width: 100%;
 	margin: 0 auto;
+	/* background-image: -moz-linear-gradient( 136deg, rgb(224,195,252) 0%, rgb(142,197,252) 100%);
+    background-image: -webkit-linear-gradient( 136deg, rgb(224,195,252) 0%, rgb(142,197,252) 100%);
+    background-image: -ms-linear-gradient( 136deg, rgb(224,195,252) 0%, rgb(142,197,252) 100%); */
+	 background-image: -webkit-linear-gradient(136deg, rgb(199,144,252) 0%, rgb(0,7,13) 100%);
 	display: flex;
 	display: -webkit-flex;
 	justify-content: center;
