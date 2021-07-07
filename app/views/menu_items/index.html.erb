@@ -62,13 +62,9 @@
         </a>
          <% if item.status %>
                  <%= link_to updateitemstatus_path(category_id: @category.id, menu_id: item.id, status: false), method: :patch do %>
-                 <i class='fas fa-toggle-on' style="color: green;font-size: 36px;position: relative;left: 7px;">
-                 </i><% end %>
+<%= image_tag "https://img.icons8.com/ios-filled/36/000000/toggle-on.png",style:"    position: relative;top: -7px;margin-right: 7px;" %><% end %>
                <% else %>
-                <%= link_to updateitemstatus_path(category_id: @category.id, menu_id: item.id, status: true), method: :patch do %><i class='fas fa-toggle-off' style="color: red;
-    font-size: 36px;
-    position: relative;
-    left: 7px;"></i><% end %>
+                <%= link_to updateitemstatus_path(category_id: @category.id, menu_id: item.id, status: true), method: :patch do %><%= image_tag "https://img.icons8.com/ios/36/000000/toggle-off.png",style:"    position: relative;top: -7px;margin-right: 7px;" %><% end %>
 
               <% end %>
 

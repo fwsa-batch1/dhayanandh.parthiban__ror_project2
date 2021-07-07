@@ -57,10 +57,12 @@
                 <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png", class: "Category_update") %>
               </button>
               <% if category.status  %>
-                 <%= link_to  updatemenucategories_path(category_id: category.id, status:false), method: :patch  do %><i class='fas fa-toggle-on' style="color: green;font-size: 35px;"></i><% end %>
+
+                 <%= link_to  updatemenucategories_path(category_id: category.id, status:false), method: :patch  do %>
+                 <%= image_tag "https://img.icons8.com/ios-filled/36/000000/toggle-on.png",style:"    position: relative;top: -7px;margin-right: 7px;" %><% end %>
 
                <%else  %>
-                <%= link_to  updatemenucategories_path(category_id: category.id, status:true), method: :patch  do %><i class='fas fa-toggle-off' style="color: red;font-size: 35px;"></i><% end %>
+                <%= link_to  updatemenucategories_path(category_id: category.id, status:true), method: :patch  do %><%= image_tag "https://img.icons8.com/ios/36/000000/toggle-off.png",style:"    position: relative;top: -7px;margin-right: 7px;" %><% end %>
 
               <% end %>
 

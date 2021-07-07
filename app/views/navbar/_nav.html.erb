@@ -8,7 +8,8 @@
   <div class="brand">
     <a href="javascript:void(0)">
 <i ></i>
-     <%= link_to customer_menupage_path do %><i class="fas fa-utensils" style="position: relative;top: 3px;font-size: 21px;"></i>Authentic Dinning <% end %>
+     <%= link_to customer_menupage_path do %><%= image_tag "https://img.icons8.com/ios/50/000000/food-donor.png",style:"width: 24px;
+    margin-right: 10px;" %>Authentic Dinning <% end %>
 
     </a>
   </div>
@@ -17,7 +18,8 @@
     <li>
       <a href="javascript:void(0)">
       <% if @current_user %>
-          <%= link_to customer_dashboards_path do %><i class="fas fa-vote-yea" style="position: relative;top: 3px;font-size: 21px;"></i>Dashboard <% end %>
+          <%= link_to customer_dashboards_path do %><%= image_tag "https://img.icons8.com/ios-filled/50/000000/dashboard.png", style:"width: 23px;
+    margin-right: 10px;" %>Dashboard <% end %>
         <%#= link_to "sign-out",destroy_session_path,method:"delete" %>
        <% end %>
     </a>
@@ -25,13 +27,14 @@
 
     <li>
       <a href="javascript:void(0)">
-        <%= link_to show_carts_path do %><i class="fas fa-cart-plus" style="position: relative;top: 3px;font-size: 21px;"></i>Cart<% end %>
+        <%= link_to show_carts_path do %> <%= image_tag "https://img.icons8.com/ios/50/000000/favorite-cart.png",style:"width: 24px;
+    margin-right: 19px;" %>Cart<% end %>
 
     </a>
     </li>
     <li>
       <a href="javascript:void(0)">
-       <i class='fas fa-user-circle' style="padding: 0;position: relative;top: 3px;font-size: 21px;"></i> <%=@current_user.name%>
+     <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %>  <%=@current_user.name%>
     </a>
     </li>
   </ul>

@@ -13,6 +13,10 @@
 	font-display: fallback;
 	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/5b0b2619b4d813f1d3f88e4d05bdcb1e.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/6b40d3b1163ea4a16e9d82eaf3da7e9e.woff") format("woff");
 }
+#item-section p {
+  color: #000;
+	font-weight: 600;
+}
 .category-homepage{
 
 	// display: grid;

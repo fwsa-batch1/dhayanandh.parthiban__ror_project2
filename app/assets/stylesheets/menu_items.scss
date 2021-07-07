@@ -16,7 +16,7 @@
 }
 body {
   background: #eee;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Postmates-Regular', sans-serif;
 }
 
 
@@ -33,7 +33,9 @@ body {
   height: 39px;
     padding-top: 8px;
 }
-
+#item-section p {
+  color: #000;
+}
 .active, .collapsible:hover {
   background-color: #555;
 }
