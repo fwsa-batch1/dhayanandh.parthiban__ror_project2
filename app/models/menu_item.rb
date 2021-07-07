@@ -3,7 +3,7 @@ class MenuItem < ApplicationRecord
   validates :name, presence: true
   validates :name, :uniqueness => true
 
-  def self.completed
-    all.where(status: false)
+  def self.updateitemstatus
+    where("status = ?",true)
   end
 end

@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@font-face {
+	font-family: "Postmates-Regular";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/494a9fffdb3f3052415c62e5aaff359f.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/22d8947f315254b2c64f41252cb72b7d.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Medium";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9c4f60537c8727f8848db5cf13148470.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/1a47f441d58c98a8d2d3264797501cf9.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Bold";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/5b0b2619b4d813f1d3f88e4d05bdcb1e.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/6b40d3b1163ea4a16e9d82eaf3da7e9e.woff") format("woff");
+}
+.customer-main-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(267px, 0fr));
+}
+.left-grid{
+  grid-column-gap: 24px;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(231px, 1fr));
+  grid-row-gap: 23px;
+  text-align: center;
+
+    margin-top: 50px;
+}
+.right-grid{
+ position: fixed;
+  left: 70%;
+  // margin-top: 80px;
+}
+.itembutton{
+  width: 50%;
+}
+.customerfooditemicon{
+  width: 100%;
+  border-radius: 5px;
+}
+.customer-item-section{
+     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    font-family: Postmates-Regular, sans-serif;
+    color: #212529;
+}
+.customer-item-section p{
+  color: #212529;
+}
+#customer-foodimage{
+  background-image: url(https://template58839.motopreview.com/mt-demo/58800/58839/mt-content/uploads/2016/06/mt-0448-home-header-bg2.jpg);
+  background-position: -170px 340px;
+}
+#customer-item-getstarted{
+  padding: 18px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: black;
+    font-weight: normal;
+}
+#section-id{
+  text-align: center;
+}
+#userdescription{
+  color: #212529;
+}
+.functional-buttons{
+  margin-top: 17px;
+  display: flex;
+  font-family: Postmates-Regular, sans-serif;
+  color: #212529;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-bottom: 9px;
+}
+.customerAddItem-button{
+  width: 60px;
+}
+.customeraddbutton{
+  width: 90px;
+}
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-family: Postmates-Regular, sans-serif;
+    color: #212529;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content-box {
+  padding: 0 18px;
+  display: none;
+  // max-height: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  font-family: Postmates-Regular, sans-serif;
+    color: #212529;
+}
+#cart-container{
+  overflow-y: scroll;
+  height: 300px;
+  padding: 13px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.table-cart {
+
+display: flex;
+justify-content: space-between;
+}
+#checkout-button{
+
+}
+.ordertable-head{
+  background: #333;
+  font-size: 16px;
+  color: #fff;
+  vertical-align: middle;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1;
+  padding: 22px 40px;
+  white-space: nowrap;
+}
+thead, tbody, tfoot, tr, td, th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  // border: 1px solid red;
+  // text-align: left;
+  padding: 30px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.Addorders-button{
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  width: 162px;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 16px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+#checkout-button{
+  display: flex;
+    // flex-direction: row-reverse;
+
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.Addaddress-text{
+  width: 100%;
+  border: 3px solid darkgrey;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 86px;
+  outline: none;
+}
+.Addaddress-button{
+  width: 55%;
+  background: #0d6efd;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  outline: none;
+  margin-top: 16px;
+  margin-left: 85px;
+  height: 36px;
+  font-size: 18px;
+}

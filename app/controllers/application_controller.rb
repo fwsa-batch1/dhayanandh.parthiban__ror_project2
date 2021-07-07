@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
       nil
     end
   end
+  def ensure_owner
+
+    unless @current_user.role == "owner"
+      redirect_to customer_menupage_path
+    end
+  end
 end

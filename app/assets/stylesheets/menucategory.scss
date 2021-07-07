@@ -1,16 +1,56 @@
+@font-face {
+	font-family: "Postmates-Regular";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/494a9fffdb3f3052415c62e5aaff359f.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/22d8947f315254b2c64f41252cb72b7d.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Medium";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9c4f60537c8727f8848db5cf13148470.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/1a47f441d58c98a8d2d3264797501cf9.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Bold";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/5b0b2619b4d813f1d3f88e4d05bdcb1e.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/6b40d3b1163ea4a16e9d82eaf3da7e9e.woff") format("woff");
+}
 .category-homepage{
-  display: flex;
-  /* flex-direction: column;
-    align-items: center; */
+
+	// display: grid;
+	// grid-template-columns: 200px 200px 200px 200px 200px;
+	// /* background-color: #2196F3; */
+	// padding: 10px;
+	// font-size: 21px;
+	// grid-row-gap: 40px;
+  //   text-align: -webkit-center;
+	// 	grid-column-gap: 30px;
+	display: grid;
+	padding: 10px;
+	font-size: 21px;
+	grid-row-gap: 40px;
+	text-align: -webkit-center;
+	grid-column-gap: 30px;
+	grid-template-columns: repeat(auto-fit, minmax(219px, 0fr));
+	justify-content: center;
+	width: 100%;
 }
 .section-one{
-  display: flex;
+  //  display: flex;
+	border: 1px solid;
+}
+#icons{
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 }
 html, body {
 	 height: 100%;
 	 min-height: 100%;
 	 margin: 0;
 	 padding: 0;
+	 font-family: Postmates-Regular, sans-serif;
+}
+.category_name{
+	text-decoration: none;
 }
  .section {
 	 position: relative;
@@ -260,7 +300,7 @@ html, body {
   display: flex;
     flex-direction: column;
     margin-left: 50px;
-    font-family: sans-serif;
+		font-family: 'Postmates-Regular';
     font-weight: 400;
 		margin-top: 50px;
 }
@@ -268,6 +308,7 @@ html, body {
   font-size: 56px;
     font-weight: bolder;
     letter-spacing: -2px;
+		line-height: 85px;
 }
 #text-content-2
 {
@@ -279,7 +320,13 @@ html, body {
 	display: flex;
 }
 .category{
-	align-self: start;
+	/* align-self: start; */
+	display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-self: normal;
+		font-family: Postmates-Regular, sans-serif;
+		margin-bottom: 23px;
 }
 .listofcategory{
 	display: flex;
@@ -287,5 +334,58 @@ html, body {
     align-items: center;
 }
 .main-container{
-	margin: 10px 66px 30px;
+	margin: 50px 66px 30px;
+}
+body{
+	padding: 0;
+}
+.AddCategory-button{
+	width: 22%;
+    background: yellow;
+    border: none;
+    border-radius: 7px;
+    height: 35px;
+}
+.AddCategory-text{
+	width: 77%;
+	height: 33px;
+	border: 2px solid grey;
+	border-radius: 4px;
+	padding-left: 6px;
+}
+.EditMenu-text{
+	width: 77%;
+	height: 33px;
+	border: 2px solid grey;
+	border-radius: 4px;
+	padding-left: 6px;
+}
+.EditMenu-button{
+	width: 22%;
+    background: yellow;
+    border: none;
+    border-radius: 7px;
+    height: 35px;
+}
+.foodicon{
+	width: 100%;
+}
+body{
+	padding: 0;
+}
+.modal-backdrop.show {
+opacity: 0;
+z-index: -1;
+}
+.getstarted {
+	width: 19%;
+	border: 1px solid black;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	color: black;
+}
+.getstarted:hover{
+	background-color: #ebc83c;
+	color: black;
 }

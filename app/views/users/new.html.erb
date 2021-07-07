@@ -4,37 +4,29 @@
 			<div class="form-left-img">
 				<%= image_tag "idly.png", class: "idly-img" %>
 			</div>
-			<%# <form class="form-detail" id="myform"> %>
-			 <%= form_with url: users_path ,class: 'form-detail' do |form| %>
+			 <%= form_with url: users_path, class: "form-detail" do |form| %>
 				<h2>SignUp Form</h2>
 				<div class="form-input-row">
 					<label for="fullname" class="label">Full Name:</label>
-					<%# <input type="text" name="fullname" id="fullname" class="input-text" placeholder="Enter Your Name"> %>
-					 <%= form.text_field :name, class:"input-text" , placeholder:"Enter Your Name" %>
+					 <%= form.text_field :name, class: "input-text", placeholder: "Enter Your Name" %>
 				</div>
 				<div class="form-input-row">
 					<label for="mail_id" class="label">Your Email:</label>
-					<%# <input type="email" name="mail_id" id="mail_id" class="input-text" placeholder="Enter Your Email" required> %>
-					 <%= form.email_field :email,class:"input-text",placeholder:"Enter Your Email" %>
+					 <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email" %>
 				</div>
 				<div class="form-input-row">
 					<label for="pwd" class="label">Password:</label>
-					<%# <input type="password" name="pwd" id="pwd" class="input-text" placeholder="Enter Your Password" required> %>
-					<%= form.password_field :password,class:"input-text", placeholder:"Enter Your Password"%>
-				</div>
-				<div style="padding-bottom: 17px; cursor: pointer;">
-					<input type="radio" name="role" id="clerk" class="input-role">
-					<label class="roles" for="clerk">Clerk</label>
-					<input type="radio" name="role" id="user" class="input-role">
-					<label class="roles" for="user">User</label>
+					<%= form.password_field :password, class: "input-text", placeholder: "Enter Your Password" %>
 				</div>
 				<div class="last-row-input">
-					<%# <input type="submit" name="signup" class="signup" value="SignUp"> %>
-					<%= form.submit "Sign-Up",class:"signup" %>
+					<%= form.submit "Sign-Up", class: "signup" %>
+				<div style="position: relative;top: -22px;">
+					<%= link_to "Already a member? Sign-in", sessions_path %>
 				</div>
-			<%# </form> %>
+				</div>
 			<% end %>
 		</div>
+
 	</div>
 
 </body>

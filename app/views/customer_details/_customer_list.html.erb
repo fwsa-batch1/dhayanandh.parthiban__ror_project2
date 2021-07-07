@@ -1,0 +1,35 @@
+<% # Customer list %>
+<div class="userlist" id="userlist" style="display: none;  height:0px;">
+    <table class="table-head" style="position: relative;
+    left: 11%;width:74%">
+    <h1 class="table-head">Customers List</h1>
+    <tr style="text-align: center;" class="usertable-head">
+        <th>S No.</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th> Email</th>
+        <th>Address</th>
+    </tr>
+    <% add = 1 %>
+    <% User.all.each do |user| %>
+      <tr style=" text-align: center;">
+        <% if user.role == "user" || user.role == "clerk" %>
+            <% if user.address == nil %>
+              <td><%= add %></td>
+              <td ><%= user.name.capitalize() %></td>
+              <td ><%= user.role.capitalize() %></td>
+              <td > <%= user.email %></td>
+              <td >Not Available</td>
+            <% else %>
+              <td ><%= add %></td>
+              <td ><%= user.name.capitalize() %></td>
+              <td ><%= user.role.capitalize() %></td>
+              <td > <%= user.email %></td>
+              <td > <%= user.address %></td>
+            <% end %>
+    <% add += 1 %>
+        <% end %>
+        </tr>
+    <% end %>
+    </table>
+</div>

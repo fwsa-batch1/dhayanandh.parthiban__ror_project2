@@ -1,0 +1,31 @@
+<div id="addclerk" style="width: 500px;    left: 38%;top: -26px; display:none">
+	<div class="form-content">
+		<div style="margin:20px 10px">
+
+			 <%= form_with url: addingclerk_path, method: :post ,class: "form-detail" do |form| %>
+				<h2>Add clerk</h2>
+				<div class="form-input-row">
+					<label for="fullname" class="label">Full Name:</label>
+					 <%= form.text_field :name,class: "input-text",placeholder: "Enter Your Name",style:"    width: 400px;" %>
+				</div>
+				<div  class="form-input-row">
+					<label for="mail_id" class="label">Your Email:</label>
+					 <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email",style:"    width: 400px;" %>
+				</div>
+				<div class="form-input-row">
+					<label for="pwd" class="label">Password:</label>
+					<%= form.password_field :password,class: "input-text", placeholder: "Enter Your Password",style:"    width: 400px;" %>
+				</div>
+        	<div class="form-input-row">
+					<label for="address" class="label">Address:</label>
+					<%= form.text_field :address,class: "input-text", placeholder: "Enter Your Address",style:"    width: 400px;" %>
+				</div>
+
+				<div class="last-row-input">
+					<%= form.submit "Add Clerk", class: "signup" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+</div>

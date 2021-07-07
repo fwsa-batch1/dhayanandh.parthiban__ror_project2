@@ -1,0 +1,71 @@
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<nav id="nav" class="nav" style="justify-content: space-between;">
+  <button class="menu">
+    <em class="hamburger"></em>
+  </button>
+  <div class="brand">
+    <a href="javascript:void(0)">
+<i ></i>
+     <%= link_to customer_menupage_path do %><i class="fas fa-utensils" style="position: relative;top: 3px;font-size: 21px;"></i>Authentic Dinning <% end %>
+
+    </a>
+  </div>
+  <ul class="navbar">
+
+    <li>
+      <a href="javascript:void(0)">
+      <% if @current_user %>
+          <%= link_to customer_dashboards_path do %><i class="fas fa-vote-yea" style="position: relative;top: 3px;font-size: 21px;"></i>Dashboard <% end %>
+        <%#= link_to "sign-out",destroy_session_path,method:"delete" %>
+       <% end %>
+    </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)">
+
+          <%= link_to clerk_orders_path do %><i class="fas fa-shopping-bag" style="position: relative;top: 3px;font-size: 21px;"></i>Orders<% end %>
+    </a>
+    </li>
+
+    <li>
+      <a href="javascript:void(0)">
+        <%= link_to show_carts_path do %><i class="fas fa-cart-plus" style="position: relative;top: 3px;font-size: 21px;"></i>Cart<% end %>
+    </a>
+    </li>
+    <li>
+    <i></i>
+      <a href="javascript:void(0)">
+       <i  class="fas fa-user-graduate" style="padding: 0;position: relative;top: 3px;font-size: 21px;"></i> <%=@current_user.name%>
+    </a>
+    </li>
+  </ul>
+</nav>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    /*http://callmenick.com/post/expanding-search-bar-using-css-transitions*/
+    (function($) {
+        "use strict";
+
+        var $navigationbar = $(".nav"),
+            y_pos = $navigationbar.offset().top,
+            height = $navigationbar.height();
+
+        //scroll top 0 sticky
+        $(document).scroll(function() {
+            var scrollTop = $(this).scrollTop();
+            if (scrollTop > 0) {
+              $navigationbar.addClass("sticky");
+            } else {
+              $navigationbar.removeClass("sticky");
+            }
+        });
+    })(jQuery, undefined);
+
+    $(".menu").click(function(){
+      $("#nav").toggleClass("open");
+    });
+
+
+
+  </script>

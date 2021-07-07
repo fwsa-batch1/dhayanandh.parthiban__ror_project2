@@ -1,70 +1,129 @@
 <!--<% MenuItem.all.each do |items| %>
   <p><%= items %></p>
 <% end %>-->
-<nav id="nav" class="nav">
-  <button class="menu">
-    <em class="hamburger"></em>
-  </button>
-  <div class="brand">
-    <a href="#">Brand</a>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<div class="bg-image">
+<%= render partial: "ownernavbar/index" %>
+
+</div>
+
+<div id="title-item">
+  <div>
+    <h1><%= @category.name %></h1>
   </div>
-  <ul class="navbar">
-    <li>
-      <a href="#home">Home</a>
-    </li>
-    <li>
-      <a href="#about">About</a>
-    </li>
-    <li>
-      <a href="#services">Services</a>
-    </li>
-    <li>
-      <a href="#contact">Contact</a>
-    </li>
-  </ul>
-</nav>
-<h1><%= @category.name %></h1>
-<div style="display:flex; flex-direction: column;align-items: center;">
+  <div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add MenuItems
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Menu Items</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div >
+              <%= form_with(url: "/menu_items", method: "post", class: "AddItem") do %>
+                <%= text_field_tag(:name, nil, class: "AddItem-text", placeholder: "Item Name", autofocus: "autofocus") %>
+                <%= text_field_tag(:price, nil, class: "AddItem-text", placeholder: "Price", autofocus: "autofocus") %>
+                <%= text_field_tag(:description, nil, class: "AddItem-text", placeholder: "Description", autofocus: "autofocus") %>
+                <%= hidden_field_tag "category_id", @category.id %>
+                <%= submit_tag("Add", class: "AddItem-button") %>
+              <% end %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="item-list">
   <% @menu_items.each do |item| %>
-    <div style="display:flex">
+    <div id="item-section">
+    <%= image_submit_tag("https://image.freepik.com/free-vector/salmon-sushi-with-chopstick-plate-cartoon-icon-illustration-japanese-food-icon-concept-isolated-flat-cartoon-style_138676-1727.jpg", class: "fooditemicon") %>
       <p><%= item.name %></p>
       <p><%= item.price %></p>
-      <p><%= item.description %></p>
-      <a href="javascript:void(0)" class="MenuItem-delete">
-        <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
-          <%= hidden_field_tag 'category_id', @category.id %>
-          <%= image_submit_tag("trash-can.svg",class:"trash-can") %>
-        <% end %>
-      </a>
-      <a href="javascript:void(0)" class="MenuItem-delete">
-        <%= form_with(url: "/menu_items/edit/#{item.id}", method: "get") do %>
-          <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" , class: "Category_update") %>
-        <% end %>
-      </a>
-      <a href="javascript:void(0)" class="MenuItem-delete" >
-        <%= form_with(url: "/menu_items/#{item.id}", method: "patch") do %>
-          <%= text_field_tag(:name, nil, class: "AddMenu-text", placeholder: "What's next",autofocus:"autofocus") %>
-          <%= text_field_tag(:price, nil, class: "AddMenu-text", placeholder: "What's next") %>
-          <%= text_field_tag(:description, nil, class: "AddMenu-text", placeholder: "What's next") %>
-          <%= hidden_field_tag 'category_id', @category.id %>
-          <%= submit_tag("Add", class: "AddMenu-button") %>
-        <% end %>
-      </a>
+        <button class="collapsible">Description</button>
+      <div class="content">
+        <p><%= item.description %></p>
+      </div>
+    <div class="icons">
+        <a href="javascript:void(0)" class="MenuItem-delete">
+          <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+            <%= hidden_field_tag "category_id", @category.id %>
+            <%= image_submit_tag("https://img.icons8.com/windows/32/000000/trash.png", class: "trash-can") %>
+          <% end %>
+        </a>
+         <% if item.status %>
+                 <%= link_to updateitemstatus_path(category_id: @category.id, menu_id: item.id, status: false), method: :patch do %>
+                 <i class='fas fa-toggle-on' style="color: green;font-size: 36px;position: relative;left: 7px;">
+                 </i><% end %>
+               <% else %>
+                <%= link_to updateitemstatus_path(category_id: @category.id, menu_id: item.id, status: true), method: :patch do %><i class='fas fa-toggle-off' style="color: red;
+    font-size: 36px;
+    position: relative;
+    left: 7px;"></i><% end %>
+
+              <% end %>
+
+        <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png", class: "Category_update") %>
+        </button>
+
     </div>
-  <% end %>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Edit Menu Items</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <a href="javascript:void(0)" class="MenuItem-delete" >
+              <%= form_with(url: "/menu_items/#{item.id}", method: "patch", class: "EditItems") do %>
+                <%= text_field_tag(:name, nil, class: "EditItem-text", placeholder: "Name", autofocus: "autofocus") %>
+                <%= text_field_tag(:price, nil, class: "EditItem-text", placeholder: "Price") %>
+                <%= text_field_tag(:description, nil, class: "EditItem-text", placeholder: "Description") %>
+                <%= hidden_field_tag "category_id", @category.id %>
+                <%= submit_tag("Edit", class: "EditItem-button") %>
+              <% end %>
+            </a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 </div>
-<div >
-  <%= form_with(url: "/menu_items", method: "post", class: "AddItem") do %>
-    <%= text_field_tag(:name, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
-    <%= text_field_tag(:price, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
-    <%= text_field_tag(:description, nil, class: "AddItem-text", placeholder: "What's next",autofocus:"autofocus") %>
-    <%= hidden_field_tag 'category_id', @category.id %>
-    <%= submit_tag("Add", class: "AddItem-button") %>
-  <% end %>
 </div>
-</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
   var $navbar = $(".nav"),
       y_pos = $navbar.offset().top,
       height = $navbar.height();
@@ -76,4 +135,5 @@
         $navbar.removeClass("sticky");
       }
   });
+
 </script>

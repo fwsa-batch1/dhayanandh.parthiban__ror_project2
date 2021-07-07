@@ -1,0 +1,32 @@
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<div class="clerk_orders" id="clerk_orders" style=" height:0px;">
+<h1 class="table-head">Orders List</h1>
+      <table style="position: relative;left: 7%">
+      <tr class="usertable-head">
+        <th>Order Id</th>
+        <th>Customer Name</th>
+        <th>Role</th>
+        <th>Order Status</th>
+        <th></th>
+      </tr>
+      <% Order.all.each do |order| %>
+        <tr>
+            <td><div style="text-align:center"><%= order.id %></div></td>
+            <td><div style="text-align:center"><%= (User.find(order.user_id).name).capitalize() %></div></td>
+            <td><div style="text-align:center"><%= (User.find(order.user_id).role).capitalize() %></div></td>
+            <td><div style="text-align:center"><%= order.status.capitalize() %></div></td>
+            <td><div style="text-align:center">
+             <% if order.status == "Delivered" || order.status == "delivered"  %>
+              <span>Status Updated</span>
+            <% else %>
+            <i class="fas fa-cash-register"></i>
+              <%= link_to "Change Status", clerk_order_path( id: order.id), method: :patch %>
+            <% end %>
+
+            </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+</div>

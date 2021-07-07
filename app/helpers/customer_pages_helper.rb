@@ -1,0 +1,2 @@
+module CustomerPagesHelper
+end

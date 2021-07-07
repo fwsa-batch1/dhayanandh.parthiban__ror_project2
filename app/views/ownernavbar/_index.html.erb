@@ -1,0 +1,27 @@
+<nav id="nav" class="nav" style="justify-content: space-between;">
+  <button class="menu">
+    <em class="hamburger"></em>
+  </button>
+  <div class="brand">
+    <a href="#">
+
+    <%= link_to menu_categories_path do %><i class="fas fa-utensils" style="position: relative;top: 3px;font-size: 21px;"></i>Authentic Dinning <% end %>
+
+    </a>
+  </div>
+  <ul class="navbar">
+
+    <li>
+      <a>
+       <%= link_to customer_details_path do %><i class="fas fa-vote-yea" style="position: relative;top: 3px;font-size: 21px;"></i>Dashboard <% end %>
+
+      </a>
+    </li>
+    <li>
+      <a>
+      <i class='fas fa-user-circle' style="padding: 0;position: relative;top: 3px;font-size: 21px;"></i> <%=@current_user.name%>
+
+      </a>
+    </li>
+  </ul>
+</nav>

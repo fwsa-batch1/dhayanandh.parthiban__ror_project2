@@ -1,0 +1,29 @@
+<div id="current-owner" >
+        <img src="admin.png" alt="John" style="width:25%">
+        <table>
+        <tr>
+          <td>Name: </td>
+          <td><div style="padding:15px"><%= @current_user.name %></div></td>
+        </tr>
+        <tr>
+           <td>Email: </td>
+           <td><div style="padding:15px"><%= @current_user.email %></div></td>
+        </tr>
+        <tr>
+           <td>Address:</td>
+
+           <% if @current_user.address %>
+           <td><div style="padding:15px"><%= @current_user.address %></td>
+           <% else %>
+            <td><div style="padding:15px">Not Available</td>
+           <% end %>
+
+        </tr>
+        <tr>
+           <td colspan="2" style="text-align:center">
+           <svg style="fill: #555;margin-right: 9px;
+            position: relative;
+            top: -3px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M18,2H6C5.447,2,5,2.447,5,3v9l5-4v3h6v2h-6v3l-5-4v9c0,0.553,0.447,1,1,1h12c0.553,0,1-0.447,1-1V3 C19,2.447,18.553,2,18,2z"></path></svg> <%= link_to "Sign Out", destroy_session_path, method: "delete" %></td>
+        </tr>
+        </table>
+</div>

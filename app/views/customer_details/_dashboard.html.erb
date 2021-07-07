@@ -1,0 +1,25 @@
+<div id="dashboard" style="
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    grid-column-gap: 45px;
+    grid-row-gap: 20px;
+    background:#eeeeee">
+  <%profit =[] %>
+    <% OrderItem.all.each do |item| %>
+      <% profit.push(item.price * item.quantity.to_i) %>
+    <% end %>
+
+  <div id="income">
+      <div>Income: <span class="currency">&#8377; </span><%= profit.sum %></div>
+  </div>
+  <div class="report-boxes">
+    <div>Profit: <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div>
+  </div>
+  <div class="report-boxes">
+    <div>Expense: <span class="currency">&#8377; </span><%= (profit.sum*50)/100 %></div>
+  </div>
+  <div class="report-boxes">
+    <div>Loss: <span class="currency">&#8377; </span><%= (profit.sum*20)/100 %></div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="food-background-image">
+  <% if @current_user.role == "clerk" %>
+      <%= render partial: "clerk_navbar/navbar" %>
+  <% else %>
+    <%= render partial: "navbar/nav" %>
+  <% end %>
+  <div class="describe-about-webpage">
+    <h2 id="text-content-1">You want it. We get it.</h2>
+    <p id="text-content-2">Food, drinks, groceries, and more available for delivery and pickup.</p>
+      <a href="#section-id" class="getstarted" style="color: #212529;">Get Started</a>
+  </div>
+</div>
+<div class="main-container">
+  <div class="listofcategory">
+    <div class="category" style="flex-direction:column">
+        <h2 style="margin-bottom: 60px;" >Explore by category </h2>
+    <div class="category-homepage">
+      <% MenuCategory.updatemenustatus.each do |category| %>
+        <div class="section-one" id="section-id">
+               <%= image_submit_tag("foodicon.png", class: "foodicon") %>
+               <%= link_to "#{category.name.capitalize()}", customer_menuitems_path(category_id: category.id), class: "category_name" %>
+         </div>
+      <% end %>
+  </div>

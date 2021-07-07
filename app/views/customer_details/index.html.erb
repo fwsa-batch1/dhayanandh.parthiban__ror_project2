@@ -1,0 +1,234 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+<main>
+    <header class="site-navbar" role="banner" style="position: absolute;
+    top: 0px;">
+
+      <div class="container" style="max-width: 1274px;max-height: 150vh;margin-top:0px">
+        <div class="row align-items-center" style="background:#f5f5f5;border: 1px solid #f5f5f5;text-align: center;">
+
+          <div class="col-11 col-md-2" style="    z-index: 1;">
+            <h1 class="mb-0 site-logo" style="font-size: 19px !important;">
+            <a href="javascript:void(0)" class="text-white mb-0" id="owner-dashboard-logo">
+               <%= link_to menu_categories_path,style:"color:black" do %>
+                  <i class="fas fa-utensils" style="position: relative;top: 3px;font-size: 21px; color:black;"></i>
+                  Authentic Dinning
+               <% end %>
+            </a>
+            </h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block" style="    border: 1px solid #f5f5f5;
+    background: #f5f5f5;    box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 10%);" >
+            <nav class="site-navigation position-relative text-right" role="navigation" style="background:red">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-sm-block" style="float: right;">
+                <li><a href="#" style="text-transform: capitalize;"><span><i class="fas fa-crown"></i>WELCOME <%= @current_user.name.upcase %></span></a></li>
+              </ul>
+            </nav>
+          </div>
+          </div>
+
+<% # sidebar %>
+
+<div class="sidebar">
+  <ul style="margin-top: 22px; height:0px;">
+    <li class="sidelist" style="padding:0px;visibility:hidden"><i class="fas fa-tachometer-alt"></i>Logo</li>
+    <li onclick="adddashboard()" class="sidelist"><i class="fas fa-tachometer-alt"></i>Dashboard</li>
+    <li onclick="addcafeteriaclerk()" class="sidelist"><i class="fas fa-user-graduate"></i>Add Clerk</li>
+    <li onclick="addowner()" class="sidelist"><i class="fas fa-user-plus"></i>Add Owner</li>
+    <li onclick="showusers()" class="sidelist"><i class="fas fa-users"></i>Customer Details</li>
+    <li onclick="showorders()" class="sidelist" ><i class="fas fa-shopping-bag" ></i>Orders</li>
+    <li onclick="showowners()" class="sidelist" ><i class="fas fa-shopping-bag" ></i>Owner Details</li>
+    <li class="sidelist" onclick="showme()"><i class="fas fa-user-cog"></i>Profile</li>
+    <li class="sidelist" ><svg style="fill: #555;margin-right: 9px;
+    position: relative;
+    top: -3px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M18,2H6C5.447,2,5,2.447,5,3v9l5-4v3h6v2h-6v3l-5-4v9c0,0.553,0.447,1,1,1h12c0.553,0,1-0.447,1-1V3 C19,2.447,18.553,2,18,2z"></path></svg> <%= link_to "Sign Out", destroy_session_path, method: "delete" %></li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+<%= render partial: "customer_list" %>
+<%= render partial: "dashboard"%>
+<%= render partial: "order_list" %>
+<%= render partial: "add_clerk" %>
+<%= render partial: "add_owner" %>
+<%= render partial: "ownerdetails" %>
+<%= render partial: "profile" %>
+
+
+
+
+<script>
+
+  var user = document.querySelector("#userlist")
+  var order= document.querySelector("#orders")
+  var adowner= document.querySelector("#addowner")
+  var ownerlist= document.querySelector("#ownerdetails")
+  var current_owner= document.querySelector("#current-owner")
+  var clerk = document.querySelector("#addclerk")
+  var dashboard = document.querySelector("#dashboard")
+  function adddashboard(){
+    // alert("hu")
+      if (dashboard.style.display == "flex")
+      {
+        dashboard.style.display ="none"
+        clerk.style.display ="none"
+         order.style.display="none"
+        ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+         current_owner.style.display = "none"
+      }
+      else if(dashboard.style.display == "none")
+      {
+        dashboard.style.display = "grid"
+        clerk.style.display = "none"
+         order.style.display="none"
+           ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+           current_owner.style.display ="none"
+      }
+  }
+  function addcafeteriaclerk(){
+    // alert("hu")
+      if (clerk.style.display == "flex")
+      {
+        clerk.style.display ="none"
+         order.style.display="none"
+        ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+         current_owner.style.display = "none"
+         dashboard.style.display ="none"
+      }
+      else if(clerk.style.display == "none")
+      {
+        clerk.style.display = "flex"
+         order.style.display="none"
+           ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+           current_owner.style.display ="none"
+           dashboard.style.display ="none"
+      }
+  }
+  function showme(){
+    // alert("hu")
+      if (current_owner.style.display == "flex")
+      {
+        current_owner.style.display ="none"
+        clerk.style.display ="none"
+         order.style.display="none"
+        ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+         dashboard.style.display ="none"
+      }
+      else if(current_owner.style.display == "none")
+      {
+        current_owner.style.display = "flex"
+        clerk.style.display ="none"
+         order.style.display="none"
+           ownerlist.style.display="none"
+         user.style.display ="none"
+         adowner.style.display ="none"
+         dashboard.style.display ="none"
+      }
+  }
+  function addowner(){
+    // alert("hu")
+      if (adowner.style.display == "flex")
+      {
+        adowner.style.display ="none"
+        clerk.style.display ="none"
+         order.style.display="none"
+        ownerlist.style.display="none"
+         user.style.display ="none"
+          current_owner.style.display ="none"
+          dashboard.style.display ="none"
+      }
+      else if(adowner.style.display == "none")
+      {
+        adowner.style.display = "flex"
+         order.style.display="none"
+         clerk.style.display ="none"
+           ownerlist.style.display="none"
+         user.style.display ="none"
+          current_owner.style.display ="none"
+          dashboard.style.display ="none"
+      }
+  }
+  function showusers(){
+    // alert("hu")
+      if (user.style.display == "flex")
+      {
+        user.style.display ="none"
+         order.style.display="none"
+         adowner.style.display ="none"
+           ownerlist.style.display="none"
+            current_owner.style.display ="none"
+            clerk.style.display ="none"
+            dashboard.style.display ="none"
+      }
+      else if(user.style.display == "none")
+      {
+        user.style.display = "flex"
+         order.style.display="none"
+         adowner.style.display ="none"
+           ownerlist.style.display="none"
+            current_owner.style.display ="none"
+            clerk.style.display ="none"
+            dashboard.style.display ="none"
+      }
+  }
+  function showorders(){
+    if (order.style.display =="flex"){
+      order.style.display="none"
+      user.style.display = "none"
+      adowner.style.display ="none"
+        ownerlist.style.display="none"
+         current_owner.style.display ="none"
+         clerk.style.display ="none"
+         dashboard.style.display ="none"
+    }
+    else if(order.style.display =="none"){
+       order.style.display="flex"
+       user.style.display = "none"
+       adowner.style.display ="none"
+         ownerlist.style.display="none"
+          current_owner.style.display ="none"
+          clerk.style.display ="none"
+          dashboard.style.display ="none"
+    }
+  }
+  function showowners(){
+    if (ownerlist.style.display =="flex"){
+      ownerlist.style.display="none"
+      user.style.display = "none"
+      adowner.style.display ="none"
+       order.style.display="none"
+        current_owner.style.display ="none"
+        clerk.style.display ="none"
+        dashboard.style.display ="none"
+    }
+    else if(ownerlist.style.display =="none"){
+       ownerlist.style.display="flex"
+       user.style.display = "none"
+       adowner.style.display ="none"
+        order.style.display="none"
+         current_owner.style.display ="none"
+         clerk.style.display ="none"
+         dashboard.style.display ="none"
+
+    }
+  }
+</script>
+
+</main>

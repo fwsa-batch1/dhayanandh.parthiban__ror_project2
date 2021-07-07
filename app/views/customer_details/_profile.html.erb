@@ -1,0 +1,18 @@
+<% # Profile %>
+<div id="current-owner" style="display:none">
+        <img src="admin.png" alt="John" style="width:25%">
+        <table>
+        <tr>
+          <td>Name: </td>
+          <td><div style="padding:15px"><%= @current_user.name %></div></td>
+        </tr>
+        <tr>
+           <td>Email: </td>
+           <td><div style="padding:15px"><%= @current_user.email %></div></td>
+        </tr>
+        <tr>
+           <td>Address:</td>
+           <td><div style="padding:15px"><%= @current_user.address %></td>
+        </tr>
+        </table>
+</div>

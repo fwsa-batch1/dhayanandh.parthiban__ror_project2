@@ -1,73 +1,109 @@
-<div id="food-background-image">
-  <%# <img src="yellowbackground.png"> %>
-  <nav id="nav" class="nav">
-    <button class="menu">
-      <em class="hamburger"></em>
-    </button>
-    <div class="brand">
-      <a href="#">Logo</a>
-    </div>
-    <ul class="navigationbar">
-      <li>
-        <a href="#">Home</a>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Test</a>
-      </li>
-      <li>
-        <a href="#">Test</a>
-      </li>
-    </ul>
-  </nav>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<div id="food-background-image">
+
+  <% # <img src="yellowbackground.png"> %>
+ <%= render partial: "ownernavbar/index" %>
   <div class="describe-about-webpage">
     <h2 id="text-content-1">You want it. We get it.</h2>
     <p id="text-content-2">Food, drinks, groceries, and more available for delivery and pickup.</p>
+      <a href="#section-id" class="getstarted">Get Started</a>
   </div>
 </div>
 <div class="main-container">
   <div class="listofcategory">
     <div class="category">
-      <h2>Explore by category</h2>
-    </div class="menu-categories">
+      <div>
+        <h2 style="margin-right: 655px">Explore by category </h2>
+      </div>
+      <!-- Button trigger modal -->
+      <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add Menu Categories
+        </button>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= form_with(url: "/menu_categories", method: "post", class: "AddTodo") do %>
+                <%= text_field_tag(:name, nil, class: "AddCategory-text", placeholder: "Add Category", autofocus: "autofocus") %>
+                <%= submit_tag("Add", class: "AddCategory-button") %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="category-homepage">
-      <%= form_with(url: "/menu_categories", method: "post", class: "AddTodo") do %>
-        <%= text_field_tag(:name, nil, class: "AddTodo-text", placeholder: "What's next",autofocus:"autofocus") %>
-        <%= submit_tag("Add", class: "AddTodo-button") %>
-      <% end %>
       <% MenuCategory.all.each do |category| %>
-        <div class="section-one">
-          <!--<p onclick="window.location = 'menuitems_path';"><%= category.name%><%=category.id %></p>-->
-          <%= link_to "#{category.name}", menu_items_path(category_id: category.id), class:"signup" %>
-          <a href="javascript:void(0)" class="MenuItem-delete">
-            <%= form_with(url: "/menu_categories/#{category.id}", method: "delete") do %>
-              <%= image_submit_tag("trash-can.svg",class:"trash-can") %>
-            <% end %>
-          </a>
-          <a href="javascript:void(0)" class="MenuItem-delete">
-            <%= form_with(url: "/menu_categories/edit/#{category.id}", method: "get") do %>
-              <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" , class: "Category_update") %>
-            <% end %>
-          </a>
-          <a href="javascript:void(0)" class="MenuItem-delete">
-            <%= form_with(url: "/menu_categories/#{category.id}", method: "patch") do %>
-              <%= text_field_tag(:name, nil, class: "AddMenu-text", placeholder: "#{category.name}",autofocus:"autofocus") %>
-              <%= submit_tag("Edit", class: "AddMenu-button") %>
-            <% end %>
-          </a>
+        <div class="section-one" id="section-id">
+                 <%= image_submit_tag("foodicon.png", class: "foodicon") %>
+          <%= link_to "#{category.name}", menu_items_path(category_id: category.id), class: "category_name" %>
+          <div id="icons">
+              <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <%= image_submit_tag("https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png", class: "Category_update") %>
+              </button>
+              <% if category.status  %>
+                 <%= link_to  updatemenucategories_path(category_id: category.id, status:false), method: :patch  do %><i class='fas fa-toggle-on' style="color: green;font-size: 35px;"></i><% end %>
+
+               <%else  %>
+                <%= link_to  updatemenucategories_path(category_id: category.id, status:true), method: :patch  do %><i class='fas fa-toggle-off' style="color: red;font-size: 35px;"></i><% end %>
+
+              <% end %>
+
+              <a href="javascript:void(0)" class="MenuItem-delete">
+                <%= form_with(url: "/menu_categories/#{category.id}", method: "delete") do %>
+                  <%= image_submit_tag("https://img.icons8.com/windows/32/000000/trash.png", class: "trash-can") %>
+                <% end %>
+              </a>
+          </div>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Edit Menu Category</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <a href="javascript:void(0)" class="MenuItem-delete">
+                    <%= form_with(url: "/menu_categories/#{category.id}", method: "patch") do %>
+                      <%= text_field_tag(:name, nil, class: "EditMenu-text", placeholder: "#{category.name}", autofocus: "autofocus") %>
+                      <%= submit_tag("Edit", class: "EditMenu-button") %>
+                    <% end %>
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-  <%# </div> %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
   <script>
     /*http://callmenick.com/post/expanding-search-bar-using-css-transitions*/
     (function($) {
         "use strict";
+          $("#btnLoginMain").trigger('click');
 
         var $navigationbar = $(".nav"),
             y_pos = $navigationbar.offset().top,
@@ -82,20 +118,13 @@
               $navigationbar.removeClass("sticky");
             }
         });
-
-        //section sticky
-        /*$(document).scroll(function() {
-            var scrollTop = $(this).scrollTop();
-            if ($(window).height() > scrollTop) {
-              $navigationbar.removeClass("sticky");
-            } else {
-              $navigationbar.addClass("sticky");
-            }
-        });*/
-
     })(jQuery, undefined);
 
-    $(".menu").click(function(){
-      $("#nav").toggleClass("open");
-    });
   </script>
+  <%# <scrip type="text/javascript">
+$( document ).ready(function() {
+   $( "#mybutton" ).trigger( "click" );
+});
+
+
+</script> %>

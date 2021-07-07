@@ -1,0 +1,2 @@
+module CustomersDashboardHelper
+end

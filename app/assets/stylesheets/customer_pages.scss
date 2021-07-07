@@ -1,0 +1,114 @@
+// Place all the styles related to the customer_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+#food-background-image{
+  background-image:url(yellowbackground.png);
+  background-size: auto 724px;
+  background-position-y: -134px;
+  height: 90vh;
+}
+.describe-about-webpage{
+  display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+		font-family: 'Postmates-Regular';
+    font-weight: 400;
+		margin-top: 50px;
+}
+#text-content-1{
+  font-size: 56px;
+    font-weight: bolder;
+    letter-spacing: -2px;
+		line-height: 85px;
+}
+#text-content-2
+{
+  margin-bottom: 40px;
+    font-size: 16px;
+    color: black;
+}
+.menu-categories{
+	display: flex;
+}
+.category{
+	/* align-self: start; */
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: normal;
+		font-family: Postmates-Regular, sans-serif;
+		margin-bottom: 23px;
+}
+#section-id{
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+	height: 106%;
+	color: black;
+}
+.listofcategory{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.category_name{
+	color: #212529;
+}
+.main-container{
+	margin: 50px 66px 30px;
+}
+.AddCategory-button{
+	width: 22%;
+    background: yellow;
+    border: none;
+    border-radius: 7px;
+    height: 35px;
+}
+.category-homepage{
+display: grid;
+padding: 10px;
+font-size: 21px;
+grid-row-gap: 40px;
+text-align: -webkit-center;
+grid-column-gap: 30px;
+grid-template-columns: repeat(auto-fit, minmax(219px, 0fr));
+justify-content: center;
+width: 100%;
+}
+.AddCategory-text{
+	width: 77%;
+	height: 33px;
+	border: 2px solid grey;
+	border-radius: 4px;
+	padding-left: 6px;
+}
+.EditMenu-text{
+	width: 77%;
+	height: 33px;
+	border: 2px solid grey;
+	border-radius: 4px;
+	padding-left: 6px;
+}
+.EditMenu-button{
+	width: 22%;
+    background: yellow;
+    border: none;
+    border-radius: 7px;
+    height: 35px;
+}
+.foodicon{
+	width: 100%;
+}
+
+.getstarted {
+	width: 19%;
+	border: 1px solid black;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+}
+.getstarted:hover{
+	background-color: #ebc83c;
+	color: black;
+}

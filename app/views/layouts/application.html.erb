@@ -12,8 +12,24 @@
   </head>
 
   <body>
+  <style>
+  body{
+        padding: 0;
+  }
+  .Flash-error{
+   background: #ac3030;
+    margin: 0;
+    text-align: center;
+    color: white;
+  }
+  </style>
+ <% if flash[:error]  %>
+    <p class="Flash-error">
+      <%= flash[:error] %>
+    </p>
+  <% end %>
+
     <%= yield %>
     <%# <button type="button" class="btn btn-primary">Primary</button> %>
-
   </body>
 </html>
