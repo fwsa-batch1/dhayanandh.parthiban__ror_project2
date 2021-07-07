@@ -1,3 +1,18 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@font-face {
+	font-family: "Postmates-Regular";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/494a9fffdb3f3052415c62e5aaff359f.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/22d8947f315254b2c64f41252cb72b7d.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Medium";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9c4f60537c8727f8848db5cf13148470.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/1a47f441d58c98a8d2d3264797501cf9.woff") format("woff");
+}
+@font-face {
+	font-family: "Postmates-Bold";
+	font-display: fallback;
+	src: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/5b0b2619b4d813f1d3f88e4d05bdcb1e.woff2") format("woff2"),url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/6b40d3b1163ea4a16e9d82eaf3da7e9e.woff") format("woff");
+}
