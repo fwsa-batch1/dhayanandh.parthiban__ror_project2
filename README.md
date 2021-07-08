@@ -57,3 +57,8 @@ If you want vist Cafeteria Management Application click 👉 [Cafeteria_manageme
 
 * Email: owner@owner.com
 * Password: owner
+
+#### Use these sample Email and Password for clerk
+
+* Email: clerk@clerk.com
+* Password: clerk
