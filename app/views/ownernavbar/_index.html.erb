@@ -5,25 +5,20 @@
   </button>
   <div class="brand">
     <a href="#">
-
-    <%= link_to menu_categories_path do %><%= image_tag "https://img.icons8.com/ios/50/000000/food-donor.png",style:"width: 24px;
+      <%= link_to menu_categories_path do %><%= image_tag "https://img.icons8.com/ios/50/000000/food-donor.png",style:"width: 24px;
     margin-right: 10px;" %>Authentic Dinning <% end %>
-
     </a>
   </div>
   <ul class="navbar">
-
     <li>
       <a>
-       <%= link_to customer_details_path do %><%= image_tag "https://img.icons8.com/ios-filled/50/000000/dashboard.png", style:"width: 23px;
+        <%= link_to customer_details_path do %><%= image_tag "https://img.icons8.com/ios-filled/50/000000/dashboard.png", style:"width: 23px;
     margin-right: 10px;" %>Dashboard <% end %>
-
       </a>
     </li>
     <li>
       <a>
-     <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %> <%=@current_user.name%>
-
+        <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %> <%=@current_user.name%>
       </a>
     </li>
   </ul>

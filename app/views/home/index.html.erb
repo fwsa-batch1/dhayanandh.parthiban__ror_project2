@@ -1,26 +1,23 @@
-
-
 <head>
-	<meta charset="utf-8">
-	<title>SignUp Form</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="homepage.css" />
+  <meta charset="utf-8">
+  <title>SignUp Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="homepage.css" />
 </head>
-
 <body class="form-v2">
-	<div class="page-content">
-		<div class="form-content">
-			<form class="form-detail" id="myform">
-				<p class="introduction" style="margin-bottom: 36px;">Welcome to Our Cafeteria Management System</p>
-				<div class="last-row-input">
-					<%# <input type="submit" name="signup" class="signup" value="SignUp"> %>
-					<%= link_to "Signup", new_user_path,class:"signup",style:"padding: 13px 30px 15px 30px;" %>
-				</div>
-				<div class="last-row-input" style="margin-top: 46px;margin-bottom: 21px;">
-	<%# <input type="submit" name="signup" class="signup" value="SignIn"> %>
-					<%= link_to "SignIn", new_sessions_path, class:"signup",style:"padding: 13px 30px 15px 30px;"  %>
-				</div>
-			</form>
-		</div>
-	</div>
+  <div class="page-content">
+    <div class="form-content">
+      <form class="form-detail" id="myform">
+        <p class="introduction" style="margin-bottom: 36px;">Welcome to Our Cafeteria Management System</p>
+        <div class="last-row-input">
+          <%# <input type="submit" name="signup" class="signup" value="SignUp"> %>
+          <%= link_to "Signup", new_user_path,class:"signup",style:"padding: 13px 30px 15px 30px;" %>
+        </div>
+        <div class="last-row-input" style="margin-top: 46px;margin-bottom: 21px;">
+          <%# <input type="submit" name="signup" class="signup" value="SignIn"> %>
+          <%= link_to "SignIn", new_sessions_path, class:"signup",style:"padding: 13px 30px 15px 30px;"  %>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>

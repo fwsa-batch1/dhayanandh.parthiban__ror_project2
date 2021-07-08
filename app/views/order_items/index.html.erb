@@ -2,100 +2,82 @@
   <% datearr = [] %>
   <% fullprice = 0 %>
   <%price = 0  %>
-<div class="container">
-  <div class="row invoice-header px-3 py-2" style="border-top-left-radius: 20px;border-top-right-radius: 20px;">
-    <div class="col-4">
-      <p>Authentic Dinning</p>
-      <h1>INVOICE</h1>
-    </div>
-    <div class="col-4 text-right" style="margin-top: 32px;">
-      <p>Email Address</p>
-      <p><%= @current_user.email %></p>
-    </div>
-    <div class="col-4 text-right" style="margin-top: 32px; color:#b3b3b3;">
-      <% if @current_user.address.present? %>
+  <div class="container">
+    <div class="row invoice-header px-3 py-2" style="border-top-left-radius: 20px;border-top-right-radius: 20px;">
+      <div class="col-4">
+        <p>Authentic Dinning</p>
+        <h1>INVOICE</h1>
+      </div>
+      <div class="col-4 text-right" style="margin-top: 32px;">
+        <p>Email Address</p>
+        <p><%= @current_user.email %></p>
+      </div>
+      <div class="col-4 text-right" style="margin-top: 32px; color:#b3b3b3;">
+        <% if @current_user.address.present? %>
           <p>Street Adress</p>
           <%= @current_user.address %>
         <% else %>
           <p>Street Address</p>
           <p>Unavailable</p>
-         <% end %>
-
-    </div>
-  </div>
-
-  <div class="invoice-content row px-5 pt-5">
-  <% order =  Order.find(@order_items.first.order_id) %>
-    <div class="col-3">
-      <h5 class="almost-gray mb-3">Invoiced to:</h5>
-      <p class="gray-ish"><%=@current_user.name%></p>
-      <h5 class="almost-gray">Date of Issue:</h5>
-
-      <p class="gray-ish"><%= order.created_at.strftime("%B %d,%Y") %> </p>
-    </div>
-    <div class="col-3">
-      <h5 class="almost-gray">Invoice number:</h5>
-      <p class="gray-ish">
-       <%= order.id %>
-       </p>
-
-
-
-    </div>
-    <div class="col-6 text-right total-field">
-
-      <h4 class="almost-gray">Invoice Total</h4>
-      <h1 class="gray-ish"><span class="curency">&#8377;</span>
-        <% @order_items.each do |item| %>
-            <% fullprice += item.price * item.quantity %>
         <% end %>
-        <%= fullprice %>
-      </h1>
-      <h5 class="almost-gray due-date">Due Date: <%=order.created_at.strftime("%B %d,%Y") %></h5>
+      </div>
     </div>
-  </div>
-
-  <div class="row mt-5" style="background: white;margin-top: 0rem !important;">
-    <div class="col-10 offset-1 invoice-table pt-1">
-      <table class="table table-hover">
-        <thead class="thead splitForPrint">
-          <tr>
-            <th scope="col gray-ish">NO.</th>
-            <th scope="col gray-ish">Item</th>
-            <th scope="col gray-ish">Qty.</th>
-            <th scope="col gray-ish">Price</th>
-
-
-          </tr>
-        </thead>
-        <tbody>
-        <% if @order_items.present? %>
-
-          <%cnt=0 %>
+    <div class="invoice-content row px-5 pt-5">
+      <% order =  Order.find(@order_items.first.order_id) %>
+      <div class="col-3">
+        <h5 class="almost-gray mb-3">Invoiced to:</h5>
+        <p class="gray-ish"><%=@current_user.name%></p>
+        <h5 class="almost-gray">Date of Issue:</h5>
+        <p class="gray-ish"><%= order.created_at.strftime("%B %d,%Y") %> </p>
+      </div>
+      <div class="col-3">
+        <h5 class="almost-gray">Invoice number:</h5>
+        <p class="gray-ish">
+          <%= order.id %>
+        </p>
+      </div>
+      <div class="col-6 text-right total-field">
+        <h4 class="almost-gray">Invoice Total</h4>
+        <h1 class="gray-ish"><span class="curency">&#8377;</span>
           <% @order_items.each do |item| %>
-          <tr>
-           <%if item.quantity >=1 %>
-            <% cnt=cnt+1 %>
-            <th scope="row"><%= cnt %></th>
-            <td class="item"><%= MenuItem.find(item.menu_item_id).name %></td>
-            <td> <%= item.quantity %></td>
-
-            <td><span class="currency">&#8377;</span> <%= item.price * item.quantity %></td>
-
-
-          </tr>
-
+            <% fullprice += item.price * item.quantity %>
           <% end %>
-
-
-        <% end %>
-        <% end %>
-      </tbody>
-      </table>
+          <%= fullprice %>
+        </h1>
+        <h5 class="almost-gray due-date">Due Date: <%=order.created_at.strftime("%B %d,%Y") %></h5>
+      </div>
     </div>
+    <div class="row mt-5" style="background: white;margin-top: 0rem !important;">
+      <div class="col-10 offset-1 invoice-table pt-1">
+        <table class="table table-hover">
+          <thead class="thead splitForPrint">
+            <tr>
+              <th scope="col gray-ish">NO.</th>
+              <th scope="col gray-ish">Item</th>
+              <th scope="col gray-ish">Qty.</th>
+              <th scope="col gray-ish">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @order_items.present? %>
+              <%cnt=0 %>
+              <% @order_items.each do |item| %>
+                <tr>
+                  <%if item.quantity >=1 %>
+                    <% cnt=cnt+1 %>
+                    <th scope="row"><%= cnt %></th>
+                    <td class="item"><%= MenuItem.find(item.menu_item_id).name %></td>
+                    <td> <%= item.quantity %></td>
+                    <td><span class="currency">&#8377;</span> <%= item.price * item.quantity %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="text-center pb-3"><em> Taxes will be calculated in &#8377; regarding other taxable
+        services.</em></p>
   </div>
-
-  <p class="text-center pb-3"><em> Taxes will be calculated in &#8377; regarding other taxable
-      services.</em></p>
-</div>
 </body>

@@ -1,72 +1,67 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/0d098bd6e3.js" crossorigin="anonymous"></script>
 <body style="padding: 0;">
-<div id="customer-foodimage">
-<%= render partial: "navbar/nav" %>
-  <div style="display: inline-block;margin-left: 50px;">
-  <h1>Are You Hungry</h1>
-  <h2>Don't Wait!!!</h2>
-  <h2>Let Start to order food now</h2>
-  <a href="#customer-food-items" id="customer-item-getstarted"></a>
+  <div id="customer-foodimage">
+    <%= render partial: "navbar/nav" %>
+    <div style="display: inline-block;margin-left: 50px;">
+      <h1>Are You Hungry</h1>
+      <h2>Don't Wait!!!</h2>
+      <h2>Let Start to order food now</h2>
+      <a href="#customer-food-items" id="customer-item-getstarted"></a>
+    </div>
   </div>
-</div>
-<div style="margin-left: 42px;">
-<div class="customer-main-grid">
-    <div style="text-align:center"class="left-grid" >
-      <% @menu_items.updateitemstatus.each do |item| %>
-
-        <div class="customer-item-section" id="customer-food-items">
-          <%= image_submit_tag("https://image.freepik.com/free-vector/salmon-sushi-with-chopstick-plate-cartoon-icon-illustration-japanese-food-icon-concept-isolated-flat-cartoon-style_138676-1727.jpg", class: "customerfooditemicon") %>
+  <div style="margin-left: 42px;">
+    <div class="customer-main-grid">
+      <div style="text-align:center"class="left-grid" >
+        <% @menu_items.updateitemstatus.each do |item| %>
+          <div class="customer-item-section" id="customer-food-items">
+            <%= image_submit_tag("https://image.freepik.com/free-vector/salmon-sushi-with-chopstick-plate-cartoon-icon-illustration-japanese-food-icon-concept-isolated-flat-cartoon-style_138676-1727.jpg", class: "customerfooditemicon") %>
             <p><%= item.name %></p>
             <p><%= item.price %></p>
-              <button class="collapsible">Description</button>
-              <div class="content-box">
-                <p id="userdescription"><%= item.description %></p>
-              </div>
+            <button class="collapsible">Description</button>
+            <div class="content-box">
+              <p id="userdescription"><%= item.description %></p>
+            </div>
             <div class="functional-buttons">
               <% if !(@current_user.cart_items.all.exists?(menu_item_id: item.id)) %>
                 <div><%= form_with(url: cart_items_path(id: item.id, quantity: 1), method: "post",class:"customeritembutton") do %>
-                  <%= submit_tag("ADD", class: "customerAddItem-button") %>
-                <% end %></div>
+                    <%= submit_tag("ADD", class: "customerAddItem-button") %>
+                  <% end %></div>
               <% else %>
-               <div>
+                <div>
                   <%= form_with(url: cart_item_path(id: item.id, quantity: 1), method: "PATCH", class:"customeritembutton") do %>
                     <%= submit_tag("+", class: "customerAddItem-button") %>
                   <% end %>
-                  </div>
+                </div>
               <% end %>
-
               <div><%= form_with(url: cart_item_path(id: item.id, quantity: 0), method: "PATCH",class:"customeritembutton") do %>
-                <%= submit_tag("-", class: "customerAddItem-button") %>
-              <% end %></div>
-              </div>
+                  <%= submit_tag("-", class: "customerAddItem-button") %>
+                <% end %></div>
+            </div>
           </div>
-    <% end %>
-      <div>
+        <% end %>
+        <div>
+        </div>
+      </div>
+      <div class="right-grid">
+        <%= render partial: "cart_items/index" ,locals:{category_id: @category_id}  %>
+      </div>
     </div>
   </div>
-    <div class="right-grid">
-      <%= render partial: "cart_items/index" ,locals:{category_id: @category_id}  %>
-    </div>
-
-</div>
-</div>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
     }
-  });
-}
-
-
-</script>
+  </script>
 </body>

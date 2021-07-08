@@ -1,32 +1,30 @@
 <body class="form-v2">
-	<div id="page">
-		<div class="form-content">
-			<div class="form-left-img">
-				<%= image_tag "idly.png", class: "idly-img" %>
-			</div>
-			 <%= form_with url: users_path, class: "form-detail" do |form| %>
-				<h2>SignUp Form</h2>
-				<div class="form-input-row">
-					<label for="fullname" class="label">Full Name:</label>
-					 <%= form.text_field :name, class: "input-text", placeholder: "Enter Your Name" %>
-				</div>
-				<div class="form-input-row">
-					<label for="mail_id" class="label">Your Email:</label>
-					 <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email" %>
-				</div>
-				<div class="form-input-row">
-					<label for="pwd" class="label">Password:</label>
-					<%= form.password_field :password, class: "input-text", placeholder: "Enter Your Password" %>
-				</div>
-				<div class="last-row-input">
-					<%= form.submit "Sign-Up", class: "signup" %>
-				<div style="position: relative;top: -22px;">
-					<%= link_to "Already a member? Sign-in", sessions_path %>
-				</div>
-				</div>
-			<% end %>
-		</div>
-
-	</div>
-
+  <div id="page">
+    <div class="form-content">
+      <div class="form-left-img">
+        <%= image_tag "idly.png", class: "idly-img" %>
+      </div>
+      <%= form_with url: users_path, class: "form-detail" do |form| %>
+        <h2>SignUp Form</h2>
+        <div class="form-input-row">
+          <label for="fullname" class="label">Full Name:</label>
+          <%= form.text_field :name, class: "input-text", placeholder: "Enter Your Name" %>
+        </div>
+        <div class="form-input-row">
+          <label for="mail_id" class="label">Your Email:</label>
+          <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email",required:true %>
+        </div>
+        <div class="form-input-row">
+          <label for="pwd" class="label">Password:</label>
+          <%= form.password_field :password, class: "input-text", placeholder: "Enter Your Password",required:true %>
+        </div>
+        <div class="last-row-input">
+          <%= form.submit "Sign-Up", class: "signup" %>
+          <div style="position: relative;top: -22px;">
+            <%= link_to "Already a member? Sign-in", sessions_path %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </body>

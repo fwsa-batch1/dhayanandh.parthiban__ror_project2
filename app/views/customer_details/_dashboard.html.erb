@@ -6,12 +6,11 @@
     grid-row-gap: 20px;
     background:#eeeeee">
   <%profit =[] %>
-    <% OrderItem.all.each do |item| %>
-      <% profit.push(item.price * item.quantity.to_i) %>
-    <% end %>
-
+  <% OrderItem.all.each do |item| %>
+    <% profit.push(item.price * item.quantity.to_i) %>
+  <% end %>
   <div id="income">
-      <div>Income: <span class="currency">&#8377; </span><%= profit.sum %></div>
+    <div>Income: <span class="currency">&#8377; </span><%= profit.sum %></div>
   </div>
   <div class="report-boxes">
     <div>Profit: <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div>

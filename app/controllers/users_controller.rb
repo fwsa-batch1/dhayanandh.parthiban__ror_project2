@@ -24,14 +24,14 @@ class UsersController < ApplicationController
     user = @current_user
     add_user = user.address = params[:address]
     if add_user
-      if user.save
-        redirect_to customer_menuitems_path(category_id: params[:category_id]) and return
+      if user.save(validate: false)
+        redirect_back(fallback_location:"/")
       else
-        flash[:error] = users.errors.full_messages.join(", ")
-        redirect_to customer_menuitems_path(category_id: params[:category_id]) and return
+        flash[:error] = user.errors.full_messages.join(", ")
+        redirect_back(fallback_location:"/")
       end
     else
-      redirect_to customer_menuitems_path(category_id: params[:category_id]) and return
+      redirect_back(fallback_location:"/")
     end
   end
 

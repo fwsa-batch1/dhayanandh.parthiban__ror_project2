@@ -2,21 +2,29 @@
 <div id="ownerdetails" style="display:none; height:0px;">
   <h1 id="owner-heading">Owners Detail</h1>
   <table id="ownerdetails-table">
-  <tr class="usertable-head">
-    <th class="table-center">Owner Id</th>
-    <th class="table-center">Owner Name</th>
-    <th class="table-center">Owner Email</th>
-    <th class="table-center">Owner Address</th>
-  </tr>
-  <% User.all.each do |user| %>
-  <tr>
-    <% if user.role == "owner" %>
-      <td class="table-center"><div><%= user.id %></div></td>
-      <td class="table-center"><div><%= user.name %></div></td>
-      <td class="table-center"><div><%= user.email %></div></td>
-      <td class="table-center"><div><%= user.address %></div></td>
+    <tr class="usertable-head">
+      <th class="table-center">Owner Id</th>
+      <th class="table-center">Owner Name</th>
+      <th class="table-center">Owner Email</th>
+      <th class="table-center">Owner Address</th>
+    </tr>
+    <% User.all.each do |user| %>
+      <tr>
+        <% if user.role == "owner" %>
+          <td class="table-center">
+            <div><%= user.id %></div>
+          </td>
+          <td class="table-center">
+            <div><%= user.name %></div>
+          </td>
+          <td class="table-center">
+            <div><%= user.email %></div>
+          </td>
+          <td class="table-center">
+            <div><%= user.address %></div>
+          </td>
+        <% end %>
+      </tr>
     <% end %>
-  </tr>
-  <% end %>
-</table>
+  </table>
 </div>

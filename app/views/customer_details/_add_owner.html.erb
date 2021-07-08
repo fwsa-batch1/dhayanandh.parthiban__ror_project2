@@ -1,32 +1,29 @@
 <% # Add owner %>
 <div id="addowner" style="justify-content: flex-end;display:none; height:0px;">
-	<div style="width: 71%;" >
-		<div class="form-content" style="width: 75%;margin:20px 10px">
-
-			 <%= form_with url: add_owner_path, class: "form-detail" do |form| %>
-				<h2>Add Owner</h2>
-				<div class="form-input-row">
-					<label for="fullname" class="label">Full Name:</label>
-					 <%= form.text_field :name, class: "input-text", placeholder: "Enter Your Name" %>
-				</div>
-				<div class="form-input-row">
-					<label for="mail_id" class="label">Your Email:</label>
-					 <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email" %>
-				</div>
-				<div class="form-input-row">
-					<label for="pwd" class="label">Password:</label>
-					<%= form.password_field :password, class: "input-text", placeholder: "Enter Your Password" %>
-				</div>
-        	<div class="form-input-row">
-					<label for="address" class="label">Address:</label>
-					<%= form.text_field :address, class: "input-text", placeholder: "Enter Your Address" %>
-				</div>
-
-				<div class="last-row-input">
-					<%= form.submit "Add", class: "signup" %>
-				</div>
-			<% end %>
-		</div>
-	</div>
-
+  <div style="width: 71%;" >
+    <div class="form-content" style="width: 75%;margin:20px 10px">
+      <%= form_with url: add_owner_path, class: "form-detail" do |form| %>
+        <h2>Add Owner</h2>
+        <div class="form-input-row">
+          <label for="fullname" class="label">Full Name:</label>
+          <%= form.text_field :name, class: "input-text", placeholder: "Enter Your Name" %>
+        </div>
+        <div class="form-input-row">
+          <label for="mail_id" class="label">Your Email:</label>
+          <%= form.email_field :email, class: "input-text", placeholder: "Enter Your Email",required:true %>
+        </div>
+        <div class="form-input-row">
+          <label for="pwd" class="label">Password:</label>
+          <%= form.password_field :password, class: "input-text", placeholder: "Enter Your Password",required:true %>
+        </div>
+        <div class="form-input-row">
+          <label for="address" class="label">Address:</label>
+          <%= form.text_field :address, class: "input-text", placeholder: "Enter Your Address",required:true %>
+        </div>
+        <div class="last-row-input">
+          <%= form.submit "Add", class: "signup" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
