@@ -1,24 +1,38 @@
 <div id="dashboard" style="
     display: grid;
     justify-content: center;
-    grid-template-columns: auto auto;
-    grid-column-gap: 45px;
-    grid-row-gap: 20px;
-    background:#eeeeee">
+    grid-row-gap: 20px;">
+    <h1>Reports</h1>
+  <div>
+    <%= form_with url: customer_details_path, method: :get do |form|%>
+      <%= form.date_field :from_date %>
+      <%= form.date_field :to_date %>
+      <%= form.submit "Show"%>
+    <% end %>
+  </div>
   <%profit =[] %>
-  <% OrderItem.all.each do |item| %>
-    <% profit.push(item.price * item.quantity.to_i) %>
+  <%@orders.each do |order| %>
+    <% order.order_items.each do |item| %>
+      <% profit.push(item.price * item.quantity.to_i) %>
+    <% end %>
   <% end %>
-  <div id="income">
-    <div>Income: <span class="currency">&#8377; </span><%= profit.sum %></div>
+
+  <table>
+  <tr style="border:2px solid black">
+    <th>Income</th>
+    <td><div><span class="currency">&#8377; </span><%= profit.sum %></div></td>
+  </tr>
+  <tr style="border:2px solid black">
+    <th>Profit</th>
+    <td><div> <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div> </td>
+    </tr>
+    <tr style="border:2px solid black">
+    <th>Expense</th>
+    <td><div> <span class="currency">&#8377; </span><%= (profit.sum*50)/100 %></div> </td>
+    </tr>
+    <tr style="border:2px solid black">
+    <th>Loss</th>
+    <td><div><span class="currency">&#8377; </span><%= (profit.sum*20)/100 %></div></td>
+    </tr>
+  </table>
   </div>
-  <div class="report-boxes">
-    <div>Profit: <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div>
-  </div>
-  <div class="report-boxes">
-    <div>Expense: <span class="currency">&#8377; </span><%= (profit.sum*50)/100 %></div>
-  </div>
-  <div class="report-boxes">
-    <div>Loss: <span class="currency">&#8377; </span><%= (profit.sum*20)/100 %></div>
-  </div>
-</div>

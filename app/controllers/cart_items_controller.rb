@@ -16,7 +16,11 @@ class CartItemsController < ApplicationController
       else
         flash[:error]="something went wrong"
       end
-      cart_item.save!
+      if cart_item.quantity == 0
+        cart_item.destroy
+      else
+        cart_item.save!
+      end
       redirect_back(fallback_location:"/")
     end
 

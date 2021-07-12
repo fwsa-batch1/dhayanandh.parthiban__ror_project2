@@ -1,5 +1,5 @@
 <h1>Cart</h1>
-<div id="cart-container">
+<div id="cart-container" style="width:378px">
   <% arr = [] %>
   <div id="cartitemlist">
     <% @current_user.cart_items.all.each do |cart| %>
@@ -22,7 +22,7 @@
     </div>
   </div>
 </div>
-<div id="checkout-button">
+<div id="checkout-button" style="margin-bottom:200px">
   <div>
     <% if !@current_user.address.present? %>
       <button type="button" class="btn btn-primary" style="align-self: flex-end;
@@ -51,7 +51,7 @@
                 <%= form.text_area :address,class: "Addaddress-text", id: "message-text", required: true,autofocus: true %>
                 <%= form.submit("Add", class: "Addaddress-button") %>
               <% end %>
-              <%# <%= link_to  "Add Address",address_path,method: :patch %>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -68,4 +68,3 @@
     <% end %>
   </div>
 </div>
-<script></script>

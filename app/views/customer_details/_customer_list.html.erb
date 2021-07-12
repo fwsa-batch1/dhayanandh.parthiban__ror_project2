@@ -13,7 +13,7 @@
     <% add = 1 %>
     <% User.all.each do |user| %>
       <tr style=" text-align: center;">
-        <% if user.role == "user" || user.role == "clerk" %>
+        <% if user.role == "user" %>
           <% if user.address == nil %>
             <td><%= add %></td>
             <td ><%= user.name.capitalize() %></td>
@@ -22,10 +22,10 @@
             <td >Not Available</td>
           <% else %>
             <td ><%= add %></td>
-            <td ><%= user.name.capitalize() %></td>
+            <td style="word-break: break-word;"><%= user.name.capitalize() %></td>
             <td ><%= user.role.capitalize() %></td>
             <td > <%= user.email %></td>
-            <td > <%= user.address %></td>
+            <td style="word-break: break-word;" > <%= user.address %></td>
           <% end %>
           <% add += 1 %>
         <% end %>

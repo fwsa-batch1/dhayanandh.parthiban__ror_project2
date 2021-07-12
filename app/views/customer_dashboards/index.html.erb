@@ -1,6 +1,6 @@
 <div id="current-owner" >
   <img src="admin.png" alt="John" style="width:25%">
-  <table>
+  <table style="width: 40%;">
     <tr>
       <td>Name: </td>
       <td>
@@ -17,7 +17,7 @@
       <td>Address:</td>
       <% if @current_user.address %>
         <td>
-          <div style="padding:15px"><%= @current_user.address %></td>
+          <div style="padding:15px;word-break: break-word;"><%= @current_user.address %></td>
         <% else %>
           <td>
             <div style="padding:15px">Not Available</td>

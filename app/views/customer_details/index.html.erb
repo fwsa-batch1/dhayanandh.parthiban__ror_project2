@@ -32,7 +32,6 @@
           <li onclick="addowner()" class="sidelist"><i class="fas fa-user-plus"></i>Add Owner</li>
           <li onclick="showusers()" class="sidelist"><i class="fas fa-users"></i>Customer Details</li>
           <li onclick="showorders()" class="sidelist" ><i class="fas fa-shopping-bag" ></i>Orders</li>
-          <li onclick="showowners()" class="sidelist" ><i class="fas fa-shopping-bag" ></i>Owner Details</li>
           <li class="sidelist" onclick="showme()"><i class="fas fa-user-cog"></i>Profile</li>
           <li class="sidelist" ><svg style="fill: #555;margin-right: 9px;
     position: relative;
@@ -44,13 +43,12 @@
       <%= render partial: "order_list" %>
       <%= render partial: "add_clerk" %>
       <%= render partial: "add_owner" %>
-      <%= render partial: "ownerdetails" %>
       <%= render partial: "profile" %>
       <script>
         var user = document.querySelector("#userlist")
         var order= document.querySelector("#orders")
         var adowner= document.querySelector("#addowner")
-        var ownerlist= document.querySelector("#ownerdetails")
+
         var current_owner= document.querySelector("#current-owner")
         var clerk = document.querySelector("#addclerk")
         var dashboard = document.querySelector("#dashboard")
@@ -61,7 +59,7 @@
               dashboard.style.display ="none"
               clerk.style.display ="none"
                order.style.display="none"
-              ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                current_owner.style.display = "none"
@@ -71,7 +69,7 @@
               dashboard.style.display = "grid"
               clerk.style.display = "none"
                order.style.display="none"
-                 ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                  current_owner.style.display ="none"
@@ -83,7 +81,7 @@
             {
               clerk.style.display ="none"
                order.style.display="none"
-              ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                current_owner.style.display = "none"
@@ -93,7 +91,7 @@
             {
               clerk.style.display = "flex"
                order.style.display="none"
-                 ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                  current_owner.style.display ="none"
@@ -107,7 +105,7 @@
               current_owner.style.display ="none"
               clerk.style.display ="none"
                order.style.display="none"
-              ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                dashboard.style.display ="none"
@@ -117,7 +115,7 @@
               current_owner.style.display = "flex"
               clerk.style.display ="none"
                order.style.display="none"
-                 ownerlist.style.display="none"
+
                user.style.display ="none"
                adowner.style.display ="none"
                dashboard.style.display ="none"
@@ -130,7 +128,7 @@
               adowner.style.display ="none"
               clerk.style.display ="none"
                order.style.display="none"
-              ownerlist.style.display="none"
+
                user.style.display ="none"
                 current_owner.style.display ="none"
                 dashboard.style.display ="none"
@@ -140,7 +138,7 @@
               adowner.style.display = "flex"
                order.style.display="none"
                clerk.style.display ="none"
-                 ownerlist.style.display="none"
+
                user.style.display ="none"
                 current_owner.style.display ="none"
                 dashboard.style.display ="none"
@@ -153,7 +151,7 @@
               user.style.display ="none"
                order.style.display="none"
                adowner.style.display ="none"
-                 ownerlist.style.display="none"
+
                   current_owner.style.display ="none"
                   clerk.style.display ="none"
                   dashboard.style.display ="none"
@@ -163,7 +161,7 @@
               user.style.display = "flex"
                order.style.display="none"
                adowner.style.display ="none"
-                 ownerlist.style.display="none"
+
                   current_owner.style.display ="none"
                   clerk.style.display ="none"
                   dashboard.style.display ="none"
@@ -174,7 +172,7 @@
             order.style.display="none"
             user.style.display = "none"
             adowner.style.display ="none"
-              ownerlist.style.display="none"
+
                current_owner.style.display ="none"
                clerk.style.display ="none"
                dashboard.style.display ="none"
@@ -183,7 +181,7 @@
              order.style.display="flex"
              user.style.display = "none"
              adowner.style.display ="none"
-               ownerlist.style.display="none"
+
                 current_owner.style.display ="none"
                 clerk.style.display ="none"
                 dashboard.style.display ="none"
@@ -191,7 +189,7 @@
         }
         function showowners(){
           if (ownerlist.style.display =="flex"){
-            ownerlist.style.display="none"
+
             user.style.display = "none"
             adowner.style.display ="none"
              order.style.display="none"
@@ -207,7 +205,7 @@
                current_owner.style.display ="none"
                clerk.style.display ="none"
                dashboard.style.display ="none"
-        
+
           }
         }
       </script>

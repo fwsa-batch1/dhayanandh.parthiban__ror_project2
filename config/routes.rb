@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :users
 
-  patch "customer_menuitems", to: "users#updateaddress", as: :address
 
   get "/", to: "home#index"
   # get "users/new" => "users#new"
@@ -20,6 +19,9 @@ Rails.application.routes.draw do
 
   get "/customer_page" => "customer_pages#index", as: :customer_menupage
   get "/customer_menuitems" => "customer_items#index", as: :customer_menuitems
+  patch "customer_menuitems", to: "users#updateaddress", as: :address
+
+
 
   patch "/menu_categories" => "menu_categories#updatemenustatus", as: :updatemenucategories
   patch "/menu_items" => "menu_items#updateitemstatus", as: :updateitemstatus
@@ -31,4 +33,5 @@ Rails.application.routes.draw do
   resources :show_carts
   resources :customer_dashboards
   resources :clerk_orders
+
 end

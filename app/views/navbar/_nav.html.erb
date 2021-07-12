@@ -23,14 +23,18 @@
     </li>
     <li>
       <a href="javascript:void(0)">
+        <%= link_to orders_path do %> <%= image_tag "https://img.icons8.com/ios-glyphs/30/000000/shopping-bag.png",style:"width: 24px;
+    margin-right: 19px;" %>Orders<% end %>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)">
         <%= link_to show_carts_path do %> <%= image_tag "https://img.icons8.com/ios/50/000000/favorite-cart.png",style:"width: 24px;
     margin-right: 19px;" %>Cart<% end %>
       </a>
     </li>
     <li>
-      <a href="javascript:void(0)">
         <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %>  <%=@current_user.name%>
-      </a>
     </li>
   </ul>
 </nav>
@@ -39,11 +43,11 @@
   /*http://callmenick.com/post/expanding-search-bar-using-css-transitions*/
   (function($) {
       "use strict";
-  
+
       var $navigationbar = $(".nav"),
           y_pos = $navigationbar.offset().top,
           height = $navigationbar.height();
-  
+
       //scroll top 0 sticky
       $(document).scroll(function() {
           var scrollTop = $(this).scrollTop();
@@ -54,7 +58,7 @@
           }
       });
   })(jQuery, undefined);
-  
+
   $(".menu").click(function(){
     $("#nav").toggleClass("open");
   });

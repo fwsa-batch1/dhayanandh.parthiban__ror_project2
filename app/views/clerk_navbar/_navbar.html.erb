@@ -33,10 +33,7 @@
       </a>
     </li>
     <li>
-      <i></i>
-      <a href="javascript:void(0)">
         <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %> <%=@current_user.name%>
-      </a>
     </li>
   </ul>
 </nav>
@@ -45,11 +42,11 @@
   /*http://callmenick.com/post/expanding-search-bar-using-css-transitions*/
   (function($) {
       "use strict";
-  
+
       var $navigationbar = $(".nav"),
           y_pos = $navigationbar.offset().top,
           height = $navigationbar.height();
-  
+
       //scroll top 0 sticky
       $(document).scroll(function() {
           var scrollTop = $(this).scrollTop();
@@ -60,7 +57,7 @@
           }
       });
   })(jQuery, undefined);
-  
+
   $(".menu").click(function(){
     $("#nav").toggleClass("open");
   });

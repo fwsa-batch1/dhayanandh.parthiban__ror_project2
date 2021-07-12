@@ -79,9 +79,9 @@
             <div class="modal-body">
               <a href="javascript:void(0)" class="MenuItem-delete" >
                 <%= form_with(url: "/menu_items/#{item.id}", method: "patch", class: "EditItems") do %>
-                  <%= text_field_tag(:name, nil, class: "EditItem-text", placeholder: "Name", autofocus: "autofocus") %>
-                  <%= text_field_tag(:price, nil, class: "EditItem-text", placeholder: "Price") %>
-                  <%= text_field_tag(:description, nil, class: "EditItem-text", placeholder: "Description") %>
+                  <%= text_field_tag(:name, item.name, class: "EditItem-text", placeholder: "Name", autofocus: "autofocus") %>
+                  <%= text_field_tag(:price, item.price, class: "EditItem-text", placeholder: "Price") %>
+                  <%= text_field_tag(:description, item.description, class: "EditItem-text", placeholder: "Description") %>
                   <%= hidden_field_tag "category_id", @category.id %>
                   <%= submit_tag("Edit", class: "EditItem-button") %>
                 <% end %>

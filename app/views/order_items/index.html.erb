@@ -12,7 +12,7 @@
         <p>Email Address</p>
         <p><%= @current_user.email %></p>
       </div>
-      <div class="col-4 text-right" style="margin-top: 32px; color:#b3b3b3;">
+      <div class="col-4 text-right" style="margin-top: 32px; color:#b3b3b3;word-break: break-word;">
         <% if @current_user.address.present? %>
           <p>Street Adress</p>
           <%= @current_user.address %>

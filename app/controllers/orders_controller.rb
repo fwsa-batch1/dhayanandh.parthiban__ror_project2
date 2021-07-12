@@ -4,15 +4,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if @current_user.role == "clerk"
-      create_orders = Order.new(user_id: @current_user.id, status: "Delivered")
+    if @current_user.cart_items.present?
+      if @current_user.role == "clerk"
+        create_orders = Order.new(user_id: @current_user.id, status: "Delivered")
+      else
+        create_orders = Order.new(user_id: @current_user.id, status: "pending")
+      end
+      if create_orders.save
+
+        redirect_to orders_path(category_id: params[:category_id])
+      else
+        redirect_to customer_menuitems_path(category_id: params[:category_id])
+      end
     else
-      create_orders = Order.new(user_id: @current_user.id, status: "pending")
-    end
-    if create_orders.save
-      redirect_to orders_path(category_id: params[:category_id])
-    else
-      redirect_to customer_menuitems_path(category_id: params[:category_id])
+      flash[:error] = "Your cart is Empty"
+      redirect_back(fallback_location: "/")
     end
   end
 

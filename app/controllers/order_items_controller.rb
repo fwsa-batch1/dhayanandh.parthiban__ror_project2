@@ -3,7 +3,8 @@ class OrderItemsController < ApplicationController
     if params[:order_id]
       order = Order.find(params[:order_id])
       if order.user_id == @current_user.id
-        @order_items = order.order_items
+
+         @order_items = order.order_items
       end
     end
     # render plain: params[:order_id].present?
@@ -24,6 +25,7 @@ class OrderItemsController < ApplicationController
       break unless create_order_items
     end
     if create_order_items
+      @current_user.cart_items.destroy_all
       redirect_to order_items_path(category_id: params[:category_id], order_id: params[:order_id])
     else
       redirect_to orders_path(category_id: params[:category_id])
