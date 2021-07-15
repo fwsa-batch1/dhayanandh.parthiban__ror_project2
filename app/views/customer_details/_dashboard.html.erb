@@ -2,37 +2,89 @@
     display: grid;
     justify-content: center;
     grid-row-gap: 20px;">
-    <h1>Reports</h1>
-  <div>
+  <h1 style="justify-content: center;display: flex;">Reports</h1>
+  <div style="justify-content: center;display: flex;">
     <%= form_with url: customer_details_path, method: :get do |form|%>
       <%= form.date_field :from_date %>
       <%= form.date_field :to_date %>
       <%= form.submit "Show"%>
     <% end %>
   </div>
+  <div style="justify-content: center;display: flex;">
   <%profit =[] %>
   <%@orders.each do |order| %>
     <% order.order_items.each do |item| %>
       <% profit.push(item.price * item.quantity.to_i) %>
     <% end %>
   <% end %>
-
   <table>
-  <tr style="border:2px solid black">
-    <th>Income</th>
-    <td><div><span class="currency">&#8377; </span><%= profit.sum %></div></td>
-  </tr>
-  <tr style="border:2px solid black">
-    <th>Profit</th>
-    <td><div> <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div> </td>
+    <tr style="border:2px solid black">
+      <th>Income</th>
+      <th>Profit</th>
+      <th>Expense</th>
+      <th>Loss</th>
     </tr>
     <tr style="border:2px solid black">
-    <th>Expense</th>
-    <td><div> <span class="currency">&#8377; </span><%= (profit.sum*50)/100 %></div> </td>
-    </tr>
-    <tr style="border:2px solid black">
-    <th>Loss</th>
-    <td><div><span class="currency">&#8377; </span><%= (profit.sum*20)/100 %></div></td>
+      <td>
+        <div><span class="currency">&#8377; </span><%= profit.sum %></div>
+      </td>
+      <td>
+        <div> <span class="currency">&#8377; </span><%= (profit.sum*30)/100 %></div>
+      </td>
+
+       <td>
+        <div> <span class="currency">&#8377; </span><%= (profit.sum*50)/100 %></div>
+      </td>
+      <td>
+        <div><span class="currency">&#8377; </span><%= (profit.sum*20)/100 %></div>
+      </td>
     </tr>
   </table>
   </div>
+  <table style="position: relative;left: 7%">
+    <tr class="usertable-head">
+      <th>Order Id</th>
+      <th>Customer Name</th>
+      <th>Role</th>
+      <th>Order Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <div style="text-align:center"><%= order.id %></div>
+        </td>
+        <td>
+          <div style="text-align:center"><%= (User.find(order.user_id).name).capitalize() %></div>
+        </td>
+        <td>
+          <div style="text-align:center"><%= (User.find(order.user_id).role).capitalize() %></div>
+        </td>
+        <td>
+          <div style="text-align:center"><%= order.status.capitalize() %></div>
+        </td>
+        <td>
+          <div style="text-align:center">
+            <% if order.status == "Delivered" || order.status == "delivered"  %>
+              <span>Status Updated</span>
+            <% else %>
+              <i class="fas fa-cash-register"></i>
+              <%= link_to "Change Status", addstatus_path(order_id: order.id), method: :put %></div>
+            <% end %>
+        </td>
+        <td>
+          <% unless (OrderItem.exists?(order_id: order.id)) %>
+                      <%= link_to "View Order invoice", order_items_path(order_id: order.id), method: :post %>
+                    <% else %>
+                      <%= link_to "View Order Invoice", order_items_path(order_id: order.id), method: :get %>
+                    <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div id="order-dashboard" >
+</div>

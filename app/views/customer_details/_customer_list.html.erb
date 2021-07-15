@@ -16,13 +16,13 @@
         <% if user.role == "user" %>
           <% if user.address == nil %>
             <td><%= add %></td>
-            <td ><%= user.name.capitalize() %></td>
+            <td style="word-break: break-word;width: 20%;"><%= user.name.capitalize() %></td>
             <td ><%= user.role.capitalize() %></td>
             <td > <%= user.email %></td>
-            <td >Not Available</td>
+            <td >Not Given</td>
           <% else %>
             <td ><%= add %></td>
-            <td style="word-break: break-word;"><%= user.name.capitalize() %></td>
+            <td style="word-break: break-word;width: 20%;"><%= user.name.capitalize() %></td>
             <td ><%= user.role.capitalize() %></td>
             <td > <%= user.email %></td>
             <td style="word-break: break-word;" > <%= user.address %></td>

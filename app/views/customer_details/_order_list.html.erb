@@ -1,6 +1,8 @@
 <% # orders list %>
+
 <div class="orders" id="orders" style="display: none; height:0px;">
   <h1 class="table-head">Orders List</h1>
+
   <table style="position: relative;left: 7%">
     <tr class="usertable-head">
       <th>Order Id</th>
@@ -8,8 +10,10 @@
       <th>Role</th>
       <th>Order Status</th>
       <th></th>
+      <th></th>
     </tr>
-    <% Order.all.order(status: :desc).each do |order| %>
+
+    <% @orders.each do |order| %>
       <tr>
         <td>
           <div style="text-align:center"><%= order.id %></div>
@@ -30,8 +34,15 @@
             <% else %>
               <i class="fas fa-cash-register"></i>
               <%= link_to "Change Status", addstatus_path(order_id: order.id), method: :put %></div>
-          </td>
-        <% end %>
+            <% end %>
+        </td>
+        <td>
+          <% unless (OrderItem.exists?(order_id: order.id)) %>
+                      <%= link_to "View Order invoice", order_items_path(order_id: order.id), method: :post %>
+                    <% else %>
+                      <%= link_to "View Order Invoice", order_items_path(order_id: order.id), method: :get %>
+                    <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

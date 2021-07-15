@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
         create_orders = Order.new(user_id: @current_user.id, status: "pending")
       end
       if create_orders.save
-
+        @cartitems = current_user.cart_items
+        add_order_items(create_orders.id)
         redirect_to orders_path(category_id: params[:category_id])
       else
         redirect_to customer_menuitems_path(category_id: params[:category_id])

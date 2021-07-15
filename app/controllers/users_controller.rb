@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :ensure_user_logged_in, except: [:updateaddress]
+  skip_before_action :ensure_user_logged_in, except: [:updateaddress,:edit_address]
 
   def new
     render "users/new"
@@ -33,6 +33,25 @@ class UsersController < ApplicationController
     else
       redirect_back(fallback_location:"/")
     end
+  end
+
+  def edit_address
+    edit_user = @current_user
+    add_user = edit_user.address = params[:address]
+    if add_user
+      if edit_user.save(validate: false)
+        redirect_back(fallback_location:"/")
+      else
+        flash[:error] = edit_user.errors.full_messages.join(", ")
+        redirect_back(fallback_location:"/")
+      end
+    else
+      redirect_back(fallback_location:"/")
+    endirect_back(fallback_location:"/")
+    end
+    # render plain: params[:address]
+
+
   end
 
   def owner

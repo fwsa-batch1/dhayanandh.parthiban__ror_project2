@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   resources :show_carts
   resources :customer_dashboards
   resources :clerk_orders
-
+  patch "/customer_dashboards", to: "users#edit_address", as: :change_address
 end

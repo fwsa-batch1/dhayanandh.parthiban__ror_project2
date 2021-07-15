@@ -1,3 +1,9 @@
+  <%if @current_user.role == "clerk" %>
+      <%= render partial: "clerk_navbar/navbar" %>
+    <%else %>
+      <%= render partial: "navbar/nav" %>
+    <% end %>
+
 <div id="current-owner" >
   <img src="admin.png" alt="John" style="width:25%">
   <table style="width: 40%;">
@@ -17,10 +23,39 @@
       <td>Address:</td>
       <% if @current_user.address %>
         <td>
-          <div style="padding:15px;word-break: break-word;"><%= @current_user.address %></td>
+          <div style="padding:15px;word-break: break-word;"><%= @current_user.address %>
+
+        <div style="padding:15px">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Edit
+              </button>
+        </td>
         <% else %>
           <td>
-            <div style="padding:15px">Not Available</td>
+            <div style="padding:15px">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add
+              </button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="width: 100%;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Address</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <%= form_with(url: address_path, method: "patch", class: "AddAddress") do |form|%>
+                        <%= form.text_area :address,class: "Addaddress-text", id: "message-text", required: true,autofocus: true %>
+                        <%= form.submit("Add", class: "Addaddress-button") %>
+                      <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
           <% end %>
         </tr>
         <tr>
@@ -31,3 +66,23 @@
         </tr>
       </table>
     </div>
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="width: 100%;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Address</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <%= form_with(url: change_address_path, method: "patch", class: "AddAddress") do |form|%>
+                        <%= form.text_area :address,class: "Addaddress-text", id: "message-text", required: true,autofocus: true %>
+                        <%= form.submit("Add", class: "Addaddress-button") %>
+                      <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>

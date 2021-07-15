@@ -2,8 +2,7 @@ class OrderItemsController < ApplicationController
   def index
     if params[:order_id]
       order = Order.find(params[:order_id])
-      if order.user_id == @current_user.id
-
+      if order.user_id == @current_user.id || @current_user.role == "owner"
          @order_items = order.order_items
       end
     end

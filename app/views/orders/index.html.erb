@@ -23,7 +23,8 @@
                 <div> <%= order.created_at.strftime("%B %d,%Y %l:%M:%S %p") %></td>
                 <td>
                   <div> <%= order.updated_at.strftime("%B %d,%Y %l:%M:%S %p") %></td>
-                  <td><% unless (OrderItem.exists?(order_id: order.id)) %>
+                  <td>
+                  <% unless (OrderItem.exists?(order_id: order.id)) %>
                       <%= link_to "View Order invoice", order_items_path(order_id: order.id), method: :post %>
                     <% else %>
                       <%= link_to "View Order Invoice", order_items_path(order_id: order.id), method: :get %>

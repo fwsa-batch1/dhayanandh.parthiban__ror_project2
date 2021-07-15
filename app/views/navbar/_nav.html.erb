@@ -14,15 +14,6 @@
   <ul class="navbar">
     <li>
       <a href="javascript:void(0)">
-        <% if @current_user %>
-          <%= link_to customer_dashboards_path do %><%= image_tag "https://img.icons8.com/ios-filled/50/000000/dashboard.png", style:"width: 23px;
-    margin-right: 10px;" %>Dashboard <% end %>
-          <%#= link_to "sign-out",destroy_session_path,method:"delete" %>
-        <% end %>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:void(0)">
         <%= link_to orders_path do %> <%= image_tag "https://img.icons8.com/ios-glyphs/30/000000/shopping-bag.png",style:"width: 24px;
     margin-right: 19px;" %>Orders<% end %>
       </a>
@@ -34,7 +25,11 @@
       </a>
     </li>
     <li>
+    <%= link_to customer_dashboards_path do %>
         <%= image_tag "https://img.icons8.com/material-rounded/24/000000/user-male-circle.png" %>  <%=@current_user.name%>
+
+        <% end %>
+
     </li>
   </ul>
 </nav>
