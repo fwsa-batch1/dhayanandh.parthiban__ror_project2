@@ -13,7 +13,7 @@
       <th></th>
     </tr>
 
-    <% @orders.each do |order| %>
+    <% Order.all.each do |order| %>
       <tr>
         <td>
           <div style="text-align:center"><%= order.id %></div>
